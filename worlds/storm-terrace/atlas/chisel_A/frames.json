@@ -1,0 +1,118 @@
+{
+ "A0_front": {
+  "camera": {
+   "extrinsics": {
+    "position": [
+     0,
+     1.6,
+     0
+    ],
+    "quaternion": [
+     0.0,
+     -0.0,
+     0.0,
+     1.0
+    ],
+    "coordinateSystem": "rub"
+   },
+   "intrinsics": {
+    "width": 1280,
+    "height": 720,
+    "fx": 640.0,
+    "fy": 640.0,
+    "cx": 640.0,
+    "cy": 360.0
+   }
+  },
+  "zMin": 2.849,
+  "zMax": 351.923,
+  "coverage": 0.817
+ },
+ "A1_right": {
+  "camera": {
+   "extrinsics": {
+    "position": [
+     0,
+     1.6,
+     0
+    ],
+    "quaternion": [
+     0.0,
+     -0.707106781,
+     0.0,
+     0.707106781
+    ],
+    "coordinateSystem": "rub"
+   },
+   "intrinsics": {
+    "width": 1280,
+    "height": 720,
+    "fx": 640.0,
+    "fy": 640.0,
+    "cx": 640.0,
+    "cy": 360.0
+   }
+  },
+  "zMin": 2.848,
+  "zMax": 351.923,
+  "coverage": 0.795
+ },
+ "A2_back": {
+  "camera": {
+   "extrinsics": {
+    "position": [
+     0,
+     1.6,
+     0
+    ],
+    "quaternion": [
+     0.0,
+     -1.0,
+     0.0,
+     0.0
+    ],
+    "coordinateSystem": "rub"
+   },
+   "intrinsics": {
+    "width": 1280,
+    "height": 720,
+    "fx": 640.0,
+    "fy": 640.0,
+    "cx": 640.0,
+    "cy": 360.0
+   }
+  },
+  "zMin": 2.848,
+  "zMax": 351.923,
+  "coverage": 0.493
+ },
+ "A3_left": {
+  "camera": {
+   "extrinsics": {
+    "position": [
+     0,
+     1.6,
+     0
+    ],
+    "quaternion": [
+     0.0,
+     -0.707106781,
+     0.0,
+     -0.707106781
+    ],
+    "coordinateSystem": "rub"
+   },
+   "intrinsics": {
+    "width": 1280,
+    "height": 720,
+    "fx": 640.0,
+    "fy": 640.0,
+    "cx": 640.0,
+    "cy": 360.0
+   }
+  },
+  "zMin": 2.848,
+  "zMax": 351.923,
+  "coverage": 0.492
+ }
+}

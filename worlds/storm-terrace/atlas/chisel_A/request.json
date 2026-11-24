@@ -1,0 +1,173 @@
+{
+ "targetFrames": [
+  {
+   "camera": {
+    "extrinsics": {
+     "position": [
+      0,
+      1.6,
+      0
+     ],
+     "quaternion": [
+      0.0,
+      -0.0,
+      0.0,
+      1.0
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   },
+   "depth": {
+    "logDepthAsset": {
+     "assetId": "asset_3a6ef515bb0a4abc96241214b6c380d3"
+    },
+    "zMin": 2.849,
+    "zMax": 351.923
+   }
+  },
+  {
+   "camera": {
+    "extrinsics": {
+     "position": [
+      0,
+      1.6,
+      0
+     ],
+     "quaternion": [
+      0.0,
+      -0.707106781,
+      0.0,
+      0.707106781
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   },
+   "depth": {
+    "logDepthAsset": {
+     "assetId": "asset_d560ba3d4ae04e7a97c75a39f1f85717"
+    },
+    "zMin": 2.848,
+    "zMax": 351.923
+   }
+  },
+  {
+   "camera": {
+    "extrinsics": {
+     "position": [
+      0,
+      1.6,
+      0
+     ],
+     "quaternion": [
+      0.0,
+      -1.0,
+      0.0,
+      0.0
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   },
+   "depth": {
+    "logDepthAsset": {
+     "assetId": "asset_dd48fc8533a64c07b163cfc78fb6c6f1"
+    },
+    "zMin": 2.848,
+    "zMax": 351.923
+   }
+  },
+  {
+   "camera": {
+    "extrinsics": {
+     "position": [
+      0,
+      1.6,
+      0
+     ],
+     "quaternion": [
+      0.0,
+      -0.707106781,
+      0.0,
+      -0.707106781
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   },
+   "depth": {
+    "logDepthAsset": {
+     "assetId": "asset_b48c817578034b898c0600909bdee4bf"
+    },
+    "zMin": 2.848,
+    "zMax": 351.923
+   }
+  }
+ ],
+ "contextFrames": [
+  {
+   "imageAsset": {
+    "assetId": "asset_87d4f1fcca334da79c20fc2b13de514b"
+   },
+   "camera": {
+    "extrinsics": {
+     "position": [
+      0,
+      1.6,
+      0
+     ],
+     "quaternion": [
+      0.0,
+      -0.0,
+      0.0,
+      1.0
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   }
+  }
+ ],
+ "prompt": "A surreal late-1980s Japanese computer-graphics art film still, ray-traced and airbrushed, with soft film grain. A vast causeway floating on a calm sea, paved in glossy pale aqua-white tiles laid in a tight half-metre grid with dark grout and sparkling specular highlights. A narrow channel of mirror-black water with a twisting glass ribbon stair cuts through the tiles toward a far platform at the horizon. A raised tiled plinth holds a reflecting pool, a gnarled tree and a tall narrow tower clad in a blue glass-tile grid. A colossal slab of luminous blue glass like frozen water-light, streaked vertically with white, with a cantilevered roof slab whose underside is terracotta tile. Farther east stands a dark indigo slab whose face is a starfield. A windswept bent tree with thousands of tiny pixel-like dark-green leaf points on a twisted trunk grows at the causeway's edge. To the south two short glass pillars form a gate. Ultramarine-cobalt sky with torn clouds glowing molten orange and gold, a blazing red-orange haze band over the sea at the horizon, the sun setting just west of north, a frozen lightning bolt striking the far platform. No people, no text.",
+ "enhancePrompt": false,
+ "modelParameters": {
+  "seed": 42
+ },
+ "returnDepth": false
+}

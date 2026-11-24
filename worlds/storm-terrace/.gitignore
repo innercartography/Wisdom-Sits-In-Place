@@ -1,1 +1,5 @@
 layout/*.npy
+atlas/*/operation.json
+atlas/*/results/operation.json
+atlas/*/*_asset.json
+atlas/*/run.stderr
