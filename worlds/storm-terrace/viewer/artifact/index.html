@@ -27,13 +27,14 @@
   .hide{display:none}
 </style>
 <div id="hud">
-  <h1>Storm Terrace · run 4 splats</h1>
+  <h1>Storm Terrace splats</h1>
   <div id="help">
     Drag to look, or click then move the mouse (<kbd>Esc</kbd> releases)<br>
     <kbd>W A S D</kbd> move · <kbd>E</kbd> up · <kbd>Q</kbd> down · <kbd>Shift</kbd> fast<br>
     <kbd>1</kbd>–<kbd>9</kbd> <kbd>0</kbd> presets · <kbd>[</kbd> <kbd>]</kbd> step · <kbd>P</kbd> copy pose · <kbd>H</kbd> hide help
   </div>
   <div id="presets"><select id="presetSel" aria-label="Camera preset"></select><button id="togg" type="button">Help</button></div>
+  <div id="presets2" style="display:flex;gap:8px;margin-top:6px;align-items:center"><select id="runSel" aria-label="Splat run" style="flex:1;min-width:0;background:var(--key);color:var(--fg);border:1px solid var(--line);border-radius:4px;padding:3px"><option value="run5">Run 5: fixed sky and ground depth</option><option value="run4">Run 4: original</option></select><label style="white-space:nowrap"><input type="checkbox" id="skyChk" checked> painted sky</label></div>
   <div id="status">loading 2,000,000 splats…</div>
   <div id="bar"><i></i></div>
 </div>
@@ -61,8 +62,10 @@ const PRESETS = [
   {"name": "overview_from_south", "position": [3, 22, 22], "quaternion": [-0.3007058, 0, 0, 0.95371695]}
 ];
 
-const PARTS = ['scene.part0.wasm', 'scene.part1.wasm', 'scene.part2.wasm'];
-const TOTAL = 32674674;
+const RUNS = {
+  run5: { parts: ['run5.part0.wasm', 'run5.part1.wasm', 'run5.part2.wasm'], total: 32692576 },
+  run4: { parts: ['scene.part0.wasm', 'scene.part1.wasm', 'scene.part2.wasm'], total: 32674674 },
+};
 const $ = (id) => document.getElementById(id);
 const renderer = new THREE.WebGLRenderer({ antialias: false });
 renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
@@ -73,28 +76,56 @@ scene.add(new SparkRenderer({ renderer }));
 const camera = new THREE.PerspectiveCamera(58.715, innerWidth / innerHeight, 0.05, 3000);
 addEventListener('resize', () => { renderer.setSize(innerWidth, innerHeight); camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); });
 
-async function loadParts() {
-  const t0 = performance.now();
-  let got = 0;
-  const bufs = await Promise.all(PARTS.map(async (p) => {
+// Painted sky dome in the painting's colours: red horizon glow into storm blue, darker at the zenith.
+const sky = new THREE.Mesh(new THREE.SphereGeometry(1500, 48, 24), new THREE.ShaderMaterial({
+  side: THREE.BackSide, depthWrite: false, depthTest: false,
+  vertexShader: 'varying vec3 vDir; void main(){ vDir = normalize(position); gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }',
+  fragmentShader: `varying vec3 vDir;
+    void main(){
+      float h = vDir.y;
+      vec3 below = vec3(0.04,0.06,0.16), glow = vec3(0.86,0.30,0.16), band = vec3(0.30,0.36,0.78), blue = vec3(0.16,0.24,0.66), zen = vec3(0.05,0.08,0.26);
+      vec3 c = h < 0.0 ? mix(glow*0.55, below, smoothstep(0.0,0.12,-h))
+             : h < 0.06 ? mix(glow, band, smoothstep(0.0,0.06,h))
+             : h < 0.35 ? mix(band, blue, smoothstep(0.06,0.35,h))
+             : mix(blue, zen, smoothstep(0.35,1.0,h));
+      gl_FragColor = vec4(c,1.0);
+    }`,
+}));
+sky.renderOrder = -1000; sky.frustumCulled = false;
+scene.add(sky);
+$('skyChk').addEventListener('change', (e) => { sky.visible = e.target.checked; });
+
+const meshes = {}; let current = null;
+async function loadRun(key) {
+  if (current) current.visible = false;
+  if (meshes[key]) { current = meshes[key]; current.visible = true; $('status').textContent = `${key}: 2,000,000 splats`; return; }
+  const { parts, total } = RUNS[key];
+  const t0 = performance.now(); let got = 0;
+  $('bar').classList.remove('hide');
+  const bufs = await Promise.all(parts.map(async (p) => {
     const r = await fetch(p);
     if (!r.ok) throw new Error(`${p}: HTTP ${r.status}`);
     const reader = r.body.getReader(); const chunks = [];
     for (;;) { const { done, value } = await reader.read(); if (done) break; chunks.push(value); got += value.length;
-      $('bar').firstElementChild.style.width = `${Math.min(100, got / TOTAL * 100).toFixed(1)}%`;
-      $('status').textContent = `downloading ${(got / 1e6).toFixed(1)} / ${(TOTAL / 1e6).toFixed(1)} MB`; }
+      $('bar').firstElementChild.style.width = `${Math.min(100, got / total * 100).toFixed(1)}%`;
+      $('status').textContent = `${key}: downloading ${(got / 1e6).toFixed(1)} / ${(total / 1e6).toFixed(1)} MB`; }
     return chunks;
   }));
   const all = new Uint8Array(got); let o = 0;
   for (const chunks of bufs) for (const c of chunks) { all.set(c, o); o += c.length; }
-  $('status').textContent = 'decoding…';
-  const splat = new SplatMesh({ fileBytes: all, fileName: 'scene.spz', fileType: 'spz' });
+  $('status').textContent = `${key}: decoding…`;
+  const splat = new SplatMesh({ fileBytes: all, fileName: `${key}.spz`, fileType: 'spz' });
   scene.add(splat);
   await splat.initialized;
-  $('status').textContent = `2,000,000 splats · loaded in ${((performance.now() - t0) / 1000).toFixed(1)} s`;
+  meshes[key] = splat;
+  if ($('runSel').value === key) { if (current && current !== splat) current.visible = false; current = splat; }
+  else splat.visible = false;
+  $('status').textContent = `${key}: 2,000,000 splats · loaded in ${((performance.now() - t0) / 1000).toFixed(1)} s`;
   $('bar').classList.add('hide');
 }
-loadParts().catch((e) => { console.error(e); $('status').textContent = `Could not load the splats: ${e.message || e}`; });
+const tryLoad = (k) => loadRun(k).catch((e) => { console.error(e); $('status').textContent = `Could not load ${k}: ${e.message || e}`; });
+$('runSel').addEventListener('change', (e) => { tryLoad(e.target.value); e.target.blur(); });
+tryLoad('run5');
 
 const euler = new THREE.Euler(0, 0, 0, 'YXZ');
 let presetIdx = 0;
@@ -171,6 +202,7 @@ renderer.setAnimationLoop(() => {
   if (keys.has('KeyE') || keys.has('Space')) move.y += 1;
   if (keys.has('KeyQ') || keys.has('KeyC')) move.y -= 1;
   if (move.lengthSq()) camera.position.addScaledVector(move.normalize(), speed);
+  sky.position.copy(camera.position);
   renderer.render(scene, camera);
   const p = camera.position;
   let yaw = (-THREE.MathUtils.radToDeg(euler.y)) % 360; if (yaw < 0) yaw += 360;
