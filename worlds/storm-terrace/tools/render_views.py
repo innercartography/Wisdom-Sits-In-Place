@@ -12,7 +12,8 @@ Outputs in ../layout/:
   cameras.json           camera-to-world 4x4 (OpenCV axes: +X right, +Y down, +Z forward) and pinhole
                          intrinsics per view, world frame = site plan (x east, y up, z north, metres)
 
-Usage: python3 tools/render_views.py [width]     (default 1280 -> 1280x720, Atlas's target size)
+Usage: python3 tools/render_views.py [width] [--views=FILE.json]   (default 1280x720; a views file renders
+       its cameras into layout/<file stem>/ instead of the 17 station views)
 """
 import functools, http.server, json, os, shutil, subprocess, sys, tempfile, threading
 from pathlib import Path
@@ -21,7 +22,9 @@ from PIL import Image, ImageFilter
 
 ROOT = Path(__file__).resolve().parent.parent
 TOOLS = ROOT / "tools"
-W = int(sys.argv[1]) if len(sys.argv) > 1 else 1280
+ARGS = [a for a in sys.argv[1:] if not a.startswith("--views=")]
+VIEWS_FILE = next((a.split("=", 1)[1] for a in sys.argv[1:] if a.startswith("--views=")), None)
+W = int(ARGS[0]) if ARGS else 1280
 H = round(W * 9 / 16)
 HFOV = 90.0
 MASK_GROW = 31  # px dilation of tree regions in the keep masks (odd)
@@ -52,8 +55,12 @@ def camera(pos, yaw):
 
 def main():
     out = ROOT / "layout"; out.mkdir(exist_ok=True)
-    views = [{"name": f"{s}{d}_{DIRS[d][0]}", "pos": list(STATIONS[s]), "yaw": DIRS[d][1]}
-             for s in STATIONS for d in VIEWS[s]]
+    if VIEWS_FILE:
+        views = json.loads(Path(VIEWS_FILE).read_text())["views"]
+        out = out / Path(VIEWS_FILE).stem; out.mkdir(exist_ok=True)
+    else:
+        views = [{"name": f"{s}{d}_{DIRS[d][0]}", "pos": list(STATIONS[s]), "yaw": DIRS[d][1]}
+                 for s in STATIONS for d in VIEWS[s]]
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
         os.symlink(three_dir(), tmp / "three")

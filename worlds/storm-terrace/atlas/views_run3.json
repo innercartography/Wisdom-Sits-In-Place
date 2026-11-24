@@ -1,0 +1,17 @@
+{
+ "note": "Run 3 target cameras. pos = site-plan metres [x east, y up (eye), z north]; yaw clockwise from north.",
+ "views": [
+  {"name": "A_yaw045", "pos": [0, 1.6, 0.01], "yaw": 45},
+  {"name": "A_yaw135", "pos": [0, 1.6, 0.01], "yaw": 135},
+  {"name": "A_yaw225", "pos": [0, 1.6, 0.01], "yaw": 225},
+  {"name": "A_yaw315", "pos": [0, 1.6, 0.01], "yaw": 315},
+  {"name": "P1_z08_yaw000", "pos": [2.5, 1.6, 8], "yaw": 0},
+  {"name": "P2_z08_yaw285", "pos": [2.5, 1.6, 8], "yaw": 285},
+  {"name": "P3_z16_yaw015", "pos": [3.0, 1.6, 16], "yaw": 15},
+  {"name": "P4_z16_yaw090", "pos": [3.0, 1.6, 16], "yaw": 90},
+  {"name": "P5_z24_yaw020", "pos": [3.5, 1.6, 24], "yaw": 20},
+  {"name": "P6_z24_yaw200", "pos": [3.5, 1.6, 24], "yaw": 200},
+  {"name": "P7_z28_yaw340", "pos": [3.5, 1.6, 28], "yaw": 340},
+  {"name": "P8_west_yaw030", "pos": [-6, 1.6, 4], "yaw": 30}
+ ]
+}

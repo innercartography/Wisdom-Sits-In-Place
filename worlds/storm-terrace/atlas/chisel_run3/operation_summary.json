@@ -1,0 +1,371 @@
+{
+ "operationId": "bf24360e1d3c4f8d8ab447b9544bfbbf",
+ "task": "atlasChisel",
+ "state": "SUCCEEDED",
+ "seed": 42,
+ "returnDepth": true,
+ "inputs": "blockout log-depth (branching trees, no masks) at 12 new cameras; context = Gemini A0-A3, B0, B2, D0, D3, C0 at their cameras; style reference = source painting",
+ "promptUsed": "A still from a surreal late-1980s Japanese computer-graphics art film: airbrushed, ray-traced, soft film grain, saturated colour. A vast causeway floats on a calm dark sea. Its floor is a tight grid of small pale aqua-white glossy tiles with thin dark grout lines and tiny sparkling highlights, smooth and orderly, never coloured glass. A narrow channel of mirror-black water with a twisting glass ribbon stair runs north toward a far platform on the horizon. A raised tiled plinth holds a shallow reflecting pool and a tall narrow tower clad in a blue glass-tile grid. A colossal slab of luminous blue glass like frozen water-light, streaked vertically with white, carries a cantilevered roof slab with a terracotta-tile underside. Farther east stands a dark indigo slab whose face is a field of stars. Two gnarled trees with twisted trunks and dense crowns of thousands of tiny pixel-like dark-green leaves with yellow-green speckles: a windswept bent tree at the causeway's western edge and a smaller tree on the plinth beside the tower. Far to the south, two short glass pillars form a gate. Lighting: the sun sits on the northern horizon, just west of north, inside a blazing red-orange haze band, and a frozen lightning bolt strikes the far northern platform. Northern sky ultramarine with torn clouds glowing molten orange and gold; eastern and western skies cobalt with orange-lit cloud undersides; the southern sky, away from the sun, is deep indigo-violet with the first stars and no sun. No people, no text.",
+ "frames": [
+  {
+   "view": "A_yaw045",
+   "image": "results/frames_00_image.jpg",
+   "depth": "results/frames_00_depth.exr",
+   "depth_confidence": "results/frames_00_depth_confidence.png",
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      0,
+      1.6,
+      -0.01
+     ],
+     "quaternion": [
+      0,
+      -0.382683432,
+      0,
+      0.923879533
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  },
+  {
+   "view": "A_yaw135",
+   "image": "results/frames_01_image.jpg",
+   "depth": "results/frames_01_depth.exr",
+   "depth_confidence": "results/frames_01_depth_confidence.png",
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      0,
+      1.6,
+      -0.01
+     ],
+     "quaternion": [
+      0,
+      -0.923879533,
+      0,
+      0.382683432
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  },
+  {
+   "view": "A_yaw225",
+   "image": "results/frames_02_image.jpg",
+   "depth": "results/frames_02_depth.exr",
+   "depth_confidence": "results/frames_02_depth_confidence.png",
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      0,
+      1.6,
+      -0.01
+     ],
+     "quaternion": [
+      0,
+      -0.923879533,
+      0,
+      -0.382683432
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  },
+  {
+   "view": "A_yaw315",
+   "image": "results/frames_03_image.jpg",
+   "depth": "results/frames_03_depth.exr",
+   "depth_confidence": "results/frames_03_depth_confidence.png",
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      0,
+      1.6,
+      -0.01
+     ],
+     "quaternion": [
+      0,
+      -0.382683432,
+      0,
+      -0.923879533
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  },
+  {
+   "view": "P1_z08_yaw000",
+   "image": "results/frames_04_image.jpg",
+   "depth": "results/frames_04_depth.exr",
+   "depth_confidence": "results/frames_04_depth_confidence.png",
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      2.5,
+      1.6,
+      -8
+     ],
+     "quaternion": [
+      0,
+      0,
+      0,
+      1
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  },
+  {
+   "view": "P2_z08_yaw285",
+   "image": "results/frames_05_image.jpg",
+   "depth": "results/frames_05_depth.exr",
+   "depth_confidence": "results/frames_05_depth_confidence.png",
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      2.5,
+      1.6,
+      -8
+     ],
+     "quaternion": [
+      0,
+      -0.608761429,
+      0,
+      -0.79335334
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  },
+  {
+   "view": "P3_z16_yaw015",
+   "image": "results/frames_06_image.jpg",
+   "depth": "results/frames_06_depth.exr",
+   "depth_confidence": "results/frames_06_depth_confidence.png",
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      3,
+      1.6,
+      -16
+     ],
+     "quaternion": [
+      0,
+      -0.130526192,
+      0,
+      0.991444861
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  },
+  {
+   "view": "P4_z16_yaw090",
+   "image": "results/frames_07_image.jpg",
+   "depth": "results/frames_07_depth.exr",
+   "depth_confidence": "results/frames_07_depth_confidence.png",
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      3,
+      1.6,
+      -16
+     ],
+     "quaternion": [
+      0,
+      -0.707106781,
+      0,
+      0.707106781
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  },
+  {
+   "view": "P5_z24_yaw020",
+   "image": "results/frames_08_image.jpg",
+   "depth": "results/frames_08_depth.exr",
+   "depth_confidence": "results/frames_08_depth_confidence.png",
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      3.5,
+      1.6,
+      -24
+     ],
+     "quaternion": [
+      0,
+      -0.173648178,
+      0,
+      0.984807753
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  },
+  {
+   "view": "P6_z24_yaw200",
+   "image": "results/frames_09_image.jpg",
+   "depth": "results/frames_09_depth.exr",
+   "depth_confidence": "results/frames_09_depth_confidence.png",
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      3.5,
+      1.6,
+      -24
+     ],
+     "quaternion": [
+      0,
+      -0.984807753,
+      0,
+      -0.173648178
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  },
+  {
+   "view": "P7_z28_yaw340",
+   "image": "results/frames_10_image.jpg",
+   "depth": "results/frames_10_depth.exr",
+   "depth_confidence": "results/frames_10_depth_confidence.png",
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      3.5,
+      1.6,
+      -28
+     ],
+     "quaternion": [
+      0,
+      -0.173648178,
+      0,
+      -0.984807753
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  },
+  {
+   "view": "P8_west_yaw030",
+   "image": "results/frames_11_image.jpg",
+   "depth": "results/frames_11_depth.exr",
+   "depth_confidence": "results/frames_11_depth_confidence.png",
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      -6,
+      1.6,
+      -4
+     ],
+     "quaternion": [
+      0,
+      -0.258819045,
+      0,
+      0.965925826
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  }
+ ]
+}

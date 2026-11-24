@@ -1,0 +1,672 @@
+{
+ "targetFrames": [
+  {
+   "camera": {
+    "extrinsics": {
+     "position": [
+      0,
+      1.6,
+      -0.01
+     ],
+     "quaternion": [
+      0.0,
+      -0.382683432,
+      0.0,
+      0.923879533
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   },
+   "depth": {
+    "logDepthAsset": {
+     "assetId": "asset_729b1a9af9124fdf87202cb9bf6a3070"
+    },
+    "zMin": 2.849,
+    "zMax": 352.338
+   }
+  },
+  {
+   "camera": {
+    "extrinsics": {
+     "position": [
+      0,
+      1.6,
+      -0.01
+     ],
+     "quaternion": [
+      0.0,
+      -0.923879533,
+      0.0,
+      0.382683432
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   },
+   "depth": {
+    "logDepthAsset": {
+     "assetId": "asset_88e6195a0d9146f7b974fa9c0aa561e9"
+    },
+    "zMin": 2.848,
+    "zMax": 352.954
+   }
+  },
+  {
+   "camera": {
+    "extrinsics": {
+     "position": [
+      0,
+      1.6,
+      -0.01
+     ],
+     "quaternion": [
+      0.0,
+      -0.923879533,
+      0.0,
+      -0.382683432
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   },
+   "depth": {
+    "logDepthAsset": {
+     "assetId": "asset_c78c68ff4caa41aab1d54ae858a7b764"
+    },
+    "zMin": 2.849,
+    "zMax": 352.34
+   }
+  },
+  {
+   "camera": {
+    "extrinsics": {
+     "position": [
+      0,
+      1.6,
+      -0.01
+     ],
+     "quaternion": [
+      0.0,
+      -0.382683432,
+      0.0,
+      -0.923879533
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   },
+   "depth": {
+    "logDepthAsset": {
+     "assetId": "asset_087eba99c11a4a23bf445dd31cef8ab3"
+    },
+    "zMin": 2.848,
+    "zMax": 352.951
+   }
+  },
+  {
+   "camera": {
+    "extrinsics": {
+     "position": [
+      2.5,
+      1.6,
+      -8
+     ],
+     "quaternion": [
+      0.0,
+      -0.0,
+      0.0,
+      1.0
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   },
+   "depth": {
+    "logDepthAsset": {
+     "assetId": "asset_b2137d5c334b4c898d77703ba77a1e6c"
+    },
+    "zMin": 2.848,
+    "zMax": 353.656
+   }
+  },
+  {
+   "camera": {
+    "extrinsics": {
+     "position": [
+      2.5,
+      1.6,
+      -8
+     ],
+     "quaternion": [
+      0.0,
+      -0.608761429,
+      0.0,
+      -0.79335334
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   },
+   "depth": {
+    "logDepthAsset": {
+     "assetId": "asset_ec0465cb0e074ed99d5147535d7a7332"
+    },
+    "zMin": 2.849,
+    "zMax": 354.845
+   }
+  },
+  {
+   "camera": {
+    "extrinsics": {
+     "position": [
+      3.0,
+      1.6,
+      -16
+     ],
+     "quaternion": [
+      0.0,
+      -0.130526192,
+      0.0,
+      0.991444861
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   },
+   "depth": {
+    "logDepthAsset": {
+     "assetId": "asset_ad5616c0c6924384890353a5ea359bf6"
+    },
+    "zMin": 2.849,
+    "zMax": 352.994
+   }
+  },
+  {
+   "camera": {
+    "extrinsics": {
+     "position": [
+      3.0,
+      1.6,
+      -16
+     ],
+     "quaternion": [
+      0.0,
+      -0.707106781,
+      0.0,
+      0.707106781
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   },
+   "depth": {
+    "logDepthAsset": {
+     "assetId": "asset_2cbcbdf90c5e42ae96a94fbbf5d3e24c"
+    },
+    "zMin": 2.848,
+    "zMax": 355.457
+   }
+  },
+  {
+   "camera": {
+    "extrinsics": {
+     "position": [
+      3.5,
+      1.6,
+      -24
+     ],
+     "quaternion": [
+      0.0,
+      -0.173648178,
+      0.0,
+      0.984807753
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   },
+   "depth": {
+    "logDepthAsset": {
+     "assetId": "asset_0878104226714f4b8218cb76f93fef94"
+    },
+    "zMin": 2.847,
+    "zMax": 352.816
+   }
+  },
+  {
+   "camera": {
+    "extrinsics": {
+     "position": [
+      3.5,
+      1.6,
+      -24
+     ],
+     "quaternion": [
+      0.0,
+      -0.984807753,
+      0.0,
+      -0.173648178
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   },
+   "depth": {
+    "logDepthAsset": {
+     "assetId": "asset_da1a1730439f4db5a82bd04e389ee1a6"
+    },
+    "zMin": 2.848,
+    "zMax": 351.944
+   }
+  },
+  {
+   "camera": {
+    "extrinsics": {
+     "position": [
+      3.5,
+      1.6,
+      -28
+     ],
+     "quaternion": [
+      0.0,
+      -0.173648178,
+      0.0,
+      -0.984807753
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   },
+   "depth": {
+    "logDepthAsset": {
+     "assetId": "asset_dc7b9072598448468730b7955add08d1"
+    },
+    "zMin": 1.561,
+    "zMax": 356.409
+   }
+  },
+  {
+   "camera": {
+    "extrinsics": {
+     "position": [
+      -6,
+      1.6,
+      -4
+     ],
+     "quaternion": [
+      0.0,
+      -0.258819045,
+      0.0,
+      0.965925826
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   },
+   "depth": {
+    "logDepthAsset": {
+     "assetId": "asset_0f2a666059f1438f88b2604a2267bb33"
+    },
+    "zMin": 2.848,
+    "zMax": 354.394
+   }
+  }
+ ],
+ "contextFrames": [
+  {
+   "imageAsset": {
+    "assetId": "asset_87d4f1fcca334da79c20fc2b13de514b"
+   },
+   "camera": {
+    "extrinsics": {
+     "position": [
+      0,
+      1.6,
+      0
+     ],
+     "quaternion": [
+      0.0,
+      -0.0,
+      0.0,
+      1.0
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   }
+  },
+  {
+   "imageAsset": {
+    "assetId": "asset_33e9c00f15384fc09f845779ab07222e"
+   },
+   "camera": {
+    "extrinsics": {
+     "position": [
+      0,
+      1.6,
+      0
+     ],
+     "quaternion": [
+      0.0,
+      -0.707106781,
+      0.0,
+      0.707106781
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   }
+  },
+  {
+   "imageAsset": {
+    "assetId": "asset_9f439c6416894fbf8acd4f68964733e6"
+   },
+   "camera": {
+    "extrinsics": {
+     "position": [
+      0,
+      1.6,
+      0
+     ],
+     "quaternion": [
+      0.0,
+      -1.0,
+      0.0,
+      0.0
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   }
+  },
+  {
+   "imageAsset": {
+    "assetId": "asset_00c41620cc4a4a4eab42ed8c8547e78f"
+   },
+   "camera": {
+    "extrinsics": {
+     "position": [
+      0,
+      1.6,
+      0
+     ],
+     "quaternion": [
+      0.0,
+      -0.707106781,
+      0.0,
+      -0.707106781
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   }
+  },
+  {
+   "imageAsset": {
+    "assetId": "asset_f858f68b53ed4989a8b8d44e140667c6"
+   },
+   "camera": {
+    "extrinsics": {
+     "position": [
+      4,
+      3.1,
+      -34
+     ],
+     "quaternion": [
+      0.0,
+      -0.0,
+      0.0,
+      1.0
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   }
+  },
+  {
+   "imageAsset": {
+    "assetId": "asset_a4082b15a44a4d9ba17c8392c331ca21"
+   },
+   "camera": {
+    "extrinsics": {
+     "position": [
+      4,
+      3.1,
+      -34
+     ],
+     "quaternion": [
+      0.0,
+      -1.0,
+      0.0,
+      0.0
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   }
+  },
+  {
+   "imageAsset": {
+    "assetId": "asset_f837afbe8848470b81d30f9a3f91c61a"
+   },
+   "camera": {
+    "extrinsics": {
+     "position": [
+      9,
+      1.6,
+      -22
+     ],
+     "quaternion": [
+      0.0,
+      -0.0,
+      0.0,
+      1.0
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   }
+  },
+  {
+   "imageAsset": {
+    "assetId": "asset_6db63deca4d44766888e60cf369d84d0"
+   },
+   "camera": {
+    "extrinsics": {
+     "position": [
+      9,
+      1.6,
+      -22
+     ],
+     "quaternion": [
+      0.0,
+      -0.707106781,
+      0.0,
+      -0.707106781
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   }
+  },
+  {
+   "imageAsset": {
+    "assetId": "asset_fda797d772384793abf5fca8935adcb1"
+   },
+   "camera": {
+    "extrinsics": {
+     "position": [
+      -0.5,
+      -1.4,
+      -22
+     ],
+     "quaternion": [
+      0.0,
+      -0.0,
+      0.0,
+      1.0
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   }
+  }
+ ],
+ "styleReferenceImageAsset": {
+  "assetId": "asset_fea4e17a54ee4313b7f681074216b70b"
+ },
+ "prompt": "A still from a surreal late-1980s Japanese computer-graphics art film: airbrushed, ray-traced, soft film grain, saturated colour. A vast causeway floats on a calm dark sea. Its floor is a tight grid of small pale aqua-white glossy tiles with thin dark grout lines and tiny sparkling highlights, smooth and orderly, never coloured glass. A narrow channel of mirror-black water with a twisting glass ribbon stair runs north toward a far platform on the horizon. A raised tiled plinth holds a shallow reflecting pool and a tall narrow tower clad in a blue glass-tile grid. A colossal slab of luminous blue glass like frozen water-light, streaked vertically with white, carries a cantilevered roof slab with a terracotta-tile underside. Farther east stands a dark indigo slab whose face is a field of stars. Two gnarled trees with twisted trunks and dense crowns of thousands of tiny pixel-like dark-green leaves with yellow-green speckles: a windswept bent tree at the causeway's western edge and a smaller tree on the plinth beside the tower. Far to the south, two short glass pillars form a gate. Lighting: the sun sits on the northern horizon, just west of north, inside a blazing red-orange haze band, and a frozen lightning bolt strikes the far northern platform. Northern sky ultramarine with torn clouds glowing molten orange and gold; eastern and western skies cobalt with orange-lit cloud undersides; the southern sky, away from the sun, is deep indigo-violet with the first stars and no sun. No people, no text.",
+ "enhancePrompt": false,
+ "modelParameters": {
+  "seed": 42
+ },
+ "returnDepth": true
+}

@@ -1,0 +1,409 @@
+{
+ "convention": "camera_to_world, OpenCV axes (+X right, +Y down, +Z forward); world: x east, y up, z north, metres; depth = z-depth along +Z",
+ "width": 1280,
+ "height": 720,
+ "hfov_deg": 90.0,
+ "intrinsics": [
+  [
+   640.0000000000001,
+   0,
+   640.0
+  ],
+  [
+   0,
+   640.0000000000001,
+   360.0
+  ],
+  [
+   0,
+   0,
+   1
+  ]
+ ],
+ "views": {
+  "A_yaw045": {
+   "camera_to_world": [
+    [
+     0.707107,
+     0.0,
+     0.707107,
+     0.0
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     1.6
+    ],
+    [
+     -0.707107,
+     0.0,
+     0.707107,
+     0.01
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/A_yaw045.png",
+   "layout": "layout/A_yaw045_layout.png",
+   "depth_cm_png": "layout/A_yaw045_depth_cm.png",
+   "depth_npy": "layout/A_yaw045_depth.npy"
+  },
+  "A_yaw135": {
+   "camera_to_world": [
+    [
+     -0.707107,
+     0.0,
+     0.707107,
+     0.0
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     1.6
+    ],
+    [
+     -0.707107,
+     0.0,
+     -0.707107,
+     0.01
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/A_yaw135.png",
+   "layout": "layout/A_yaw135_layout.png",
+   "depth_cm_png": "layout/A_yaw135_depth_cm.png",
+   "depth_npy": "layout/A_yaw135_depth.npy"
+  },
+  "A_yaw225": {
+   "camera_to_world": [
+    [
+     -0.707107,
+     0.0,
+     -0.707107,
+     0.0
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     1.6
+    ],
+    [
+     0.707107,
+     0.0,
+     -0.707107,
+     0.01
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/A_yaw225.png",
+   "layout": "layout/A_yaw225_layout.png",
+   "depth_cm_png": "layout/A_yaw225_depth_cm.png",
+   "depth_npy": "layout/A_yaw225_depth.npy"
+  },
+  "A_yaw315": {
+   "camera_to_world": [
+    [
+     0.707107,
+     0.0,
+     -0.707107,
+     0.0
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     1.6
+    ],
+    [
+     0.707107,
+     0.0,
+     0.707107,
+     0.01
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/A_yaw315.png",
+   "layout": "layout/A_yaw315_layout.png",
+   "depth_cm_png": "layout/A_yaw315_depth_cm.png",
+   "depth_npy": "layout/A_yaw315_depth.npy"
+  },
+  "P1_z08_yaw000": {
+   "camera_to_world": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     2.5
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     1.6
+    ],
+    [
+     -0.0,
+     0.0,
+     1.0,
+     8.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/P1_z08_yaw000.png",
+   "layout": "layout/P1_z08_yaw000_layout.png",
+   "depth_cm_png": "layout/P1_z08_yaw000_depth_cm.png",
+   "depth_npy": "layout/P1_z08_yaw000_depth.npy"
+  },
+  "P2_z08_yaw285": {
+   "camera_to_world": [
+    [
+     0.258819,
+     0.0,
+     -0.965926,
+     2.5
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     1.6
+    ],
+    [
+     0.965926,
+     0.0,
+     0.258819,
+     8.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/P2_z08_yaw285.png",
+   "layout": "layout/P2_z08_yaw285_layout.png",
+   "depth_cm_png": "layout/P2_z08_yaw285_depth_cm.png",
+   "depth_npy": "layout/P2_z08_yaw285_depth.npy"
+  },
+  "P3_z16_yaw015": {
+   "camera_to_world": [
+    [
+     0.965926,
+     0.0,
+     0.258819,
+     3.0
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     1.6
+    ],
+    [
+     -0.258819,
+     0.0,
+     0.965926,
+     16.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/P3_z16_yaw015.png",
+   "layout": "layout/P3_z16_yaw015_layout.png",
+   "depth_cm_png": "layout/P3_z16_yaw015_depth_cm.png",
+   "depth_npy": "layout/P3_z16_yaw015_depth.npy"
+  },
+  "P4_z16_yaw090": {
+   "camera_to_world": [
+    [
+     0.0,
+     0.0,
+     1.0,
+     3.0
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     1.6
+    ],
+    [
+     -1.0,
+     0.0,
+     0.0,
+     16.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/P4_z16_yaw090.png",
+   "layout": "layout/P4_z16_yaw090_layout.png",
+   "depth_cm_png": "layout/P4_z16_yaw090_depth_cm.png",
+   "depth_npy": "layout/P4_z16_yaw090_depth.npy"
+  },
+  "P5_z24_yaw020": {
+   "camera_to_world": [
+    [
+     0.939693,
+     0.0,
+     0.34202,
+     3.5
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     1.6
+    ],
+    [
+     -0.34202,
+     0.0,
+     0.939693,
+     24.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/P5_z24_yaw020.png",
+   "layout": "layout/P5_z24_yaw020_layout.png",
+   "depth_cm_png": "layout/P5_z24_yaw020_depth_cm.png",
+   "depth_npy": "layout/P5_z24_yaw020_depth.npy"
+  },
+  "P6_z24_yaw200": {
+   "camera_to_world": [
+    [
+     -0.939693,
+     0.0,
+     -0.34202,
+     3.5
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     1.6
+    ],
+    [
+     0.34202,
+     0.0,
+     -0.939693,
+     24.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/P6_z24_yaw200.png",
+   "layout": "layout/P6_z24_yaw200_layout.png",
+   "depth_cm_png": "layout/P6_z24_yaw200_depth_cm.png",
+   "depth_npy": "layout/P6_z24_yaw200_depth.npy"
+  },
+  "P7_z28_yaw340": {
+   "camera_to_world": [
+    [
+     0.939693,
+     0.0,
+     -0.34202,
+     3.5
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     1.6
+    ],
+    [
+     0.34202,
+     0.0,
+     0.939693,
+     28.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/P7_z28_yaw340.png",
+   "layout": "layout/P7_z28_yaw340_layout.png",
+   "depth_cm_png": "layout/P7_z28_yaw340_depth_cm.png",
+   "depth_npy": "layout/P7_z28_yaw340_depth.npy"
+  },
+  "P8_west_yaw030": {
+   "camera_to_world": [
+    [
+     0.866025,
+     0.0,
+     0.5,
+     -6.0
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     1.6
+    ],
+    [
+     -0.5,
+     0.0,
+     0.866025,
+     4.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/P8_west_yaw030.png",
+   "layout": "layout/P8_west_yaw030_layout.png",
+   "depth_cm_png": "layout/P8_west_yaw030_depth_cm.png",
+   "depth_npy": "layout/P8_west_yaw030_depth.npy"
+  }
+ }
+}
