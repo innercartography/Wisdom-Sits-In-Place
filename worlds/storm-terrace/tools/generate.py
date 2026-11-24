@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""Generate the Storm Terrace directional views with Gemini (OpenAI-compatible endpoint).
+"""Generate the Storm Terrace directional views with Gemini (native generateContent API).
 
 Prompts (STYLE, RULES, SHOT blocks) are read from ../README.md so the README stays
 the single source of truth. Each shot is sent with its reference images.
 
-Auth: sends `Authorization: Bearer $GEMINI_API_KEY`. In the Claude cloud environment
-the network proxy injects the saved key, so the variable can be a placeholder.
+Auth: sends `x-goog-api-key: $GEMINI_API_KEY`. In the Claude cloud environment the
+network proxy injects the saved key into that header, so the variable can be a placeholder.
+(The OpenAI-compatible endpoint can't return images from these models, so we use the
+native API.)
 
 Usage:
   python3 tools/generate.py                 # all missing shots, in dependency order
@@ -21,7 +23,8 @@ SRC = ROOT / "source" / "A0_front_source_clean.png"
 PLAN = ROOT / "source" / "site_plan.png"
 OUT = ROOT / "generated"
 MODEL = os.environ.get("MODEL", "gemini-3-pro-image")
-URL = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions"
+URL = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent"
+IMAGE_SIZE = os.environ.get("IMAGE_SIZE", "2K")
 KEY = os.environ.get("GEMINI_API_KEY", "proxy-injected")
 
 # shot -> generated neighbours to attach (source + plan are always attached first)
@@ -49,11 +52,11 @@ def load_prompts():
     return style, rules, shots
 
 
-def data_url(path, max_side=1600):
+def inline(path, max_side=1600):
     im = Image.open(path).convert("RGB")
     im.thumbnail((max_side, max_side))
     buf = io.BytesIO(); im.save(buf, "JPEG", quality=92)
-    return "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode()
+    return {"inline_data": {"mime_type": "image/jpeg", "data": base64.b64encode(buf.getvalue()).decode()}}
 
 
 def find_images(obj):
@@ -79,7 +82,7 @@ def find_images(obj):
 def post(payload):
     ctx = ssl.create_default_context(cafile="/root/.ccr/ca-bundle.crt") if Path("/root/.ccr/ca-bundle.crt").exists() else None
     req = urllib.request.Request(URL, json.dumps(payload).encode(), {
-        "Content-Type": "application/json", "Authorization": f"Bearer {KEY}"})
+        "Content-Type": "application/json", "x-goog-api-key": KEY})
     with urllib.request.urlopen(req, timeout=300, context=ctx) as r:
         return json.load(r)
 
@@ -100,18 +103,18 @@ def generate(name, refs, style, rules, shots):
     if name not in shots:
         sys.exit(f"no SHOT block for {name} in README.md")
     text = f"{style}\n\n{rules}\n\n{shots[name]}\n\nOutput one 16:9 landscape image."
-    content = [{"type": "text", "text": text},
-               {"type": "image_url", "image_url": {"url": data_url(SRC)}},
-               {"type": "image_url", "image_url": {"url": data_url(PLAN)}}]
+    content = [{"text": text}, inline(SRC), inline(PLAN)]
     for r in refs:
         p = OUT / f"{r}.png"
         if p.exists():
-            content.append({"type": "image_url", "image_url": {"url": data_url(p)}})
+            content.append(inline(p))
         else:
             print(f"  (reference {r} missing, continuing without it)")
     for attempt in range(3):
         try:
-            resp = post({"model": MODEL, "messages": [{"role": "user", "content": content}]})
+            resp = post({"contents": [{"role": "user", "parts": content}],
+                         "generationConfig": {"responseModalities": ["TEXT", "IMAGE"],
+                                              "imageConfig": {"aspectRatio": "16:9", "imageSize": IMAGE_SIZE}}})
             break
         except urllib.error.HTTPError as e:
             body = e.read().decode()[:400]
