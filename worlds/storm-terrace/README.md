@@ -111,14 +111,14 @@ SHOT B1_right: On the plinth, facing EAST. Eight metres ahead, the GLASS MONOLIT
 
 **B3_left (270°)**: attach plan + B0 + A3.
 ```
-SHOT B3_left: On the plinth, facing WEST. Foreground: the reflecting pool spills over the plinth's west edge as a thin glassy sheet-waterfall down into the black CHANNEL below. Across the channel: the west tiled walkway, then the causeway's edge and open red-hazed sea to the horizon. The right side of the sky glows warmest (the sun is just off-frame right). Cobalt sky, orange-gold torn clouds.
+SHOT B3_left: On the plinth, facing WEST. Foreground: the reflecting pool spills over the plinth's west edge as a thin glassy sheet-waterfall down into the black CHANNEL below. Across the channel: the west tiled walkway, then the causeway's edge and open red-hazed sea to the horizon. The right side of the sky glows warmest (the sun is just off-frame right). Cobalt sky, orange-gold torn clouds. Geometry check: the channel runs LEFT-TO-RIGHT across the frame (north to south), parallel to the image plane, directly below the plinth's edge — it does NOT recede away from the camera. Beyond it the west walkway is a horizontal band, then the sea.
 ```
 
 ### Station E: Lightning Platform (x 0, z 108) · Tier 2
 
 **E2_back (180°)**, the establishing look-back. Attach source + plan + A0 + B0.
 ```
-SHOT E2_back: Standing on the far LIGHTNING PLATFORM, facing SOUTH, looking back at the whole site. Two parallel tiled walkways with the narrow black CHANNEL between them run 40 m back to the main causeway. Left of centre: the raised PLINTH with the PLINTH TREE and the tall blue glass-tile TOWER. Further left and behind: the 70 m GLASS MONOLITH with its brown tiled LINTEL cantilevered from its top, and far behind, the dark STARFIELD MONOLITH. Right of the channel: the BENT TREE on the causeway's edge. The low sun behind the camera floods everything with warm orange-red light and throws long shadows toward the indigo southern sky.
+SHOT E2_back: Standing on the far LIGHTNING PLATFORM, facing SOUTH, looking back at the whole site. Two parallel tiled walkways with the narrow black CHANNEL between them run 40 m back to the main causeway. Left of centre: the raised PLINTH with the PLINTH TREE and the tall blue glass-tile TOWER. Further left and behind: the 70 m GLASS MONOLITH with its brown tiled LINTEL cantilevered from its top, and far behind, the dark STARFIELD MONOLITH. Right of the channel: the BENT TREE on the causeway's edge. The low sun behind the camera floods everything with warm orange-red light and throws long shadows toward the indigo southern sky. Scale check: everything is FAR away — the tower is ~55 m away and fairly small in frame, the glass monolith 70–90 m away, the start point beyond 100 m; the walkways and channel converge strongly toward the middle distance. Left-to-right order across the frame (we face south, so east is on the left): starfield monolith (far left, distant) — glass monolith with lintel — tower and plinth tree — channel (centre) — bent tree (right).
 ```
 
 **E0_front (0°)** · attach source + plan + A0.
@@ -128,7 +128,7 @@ SHOT E0_front: On the LIGHTNING PLATFORM, facing NORTH — the edge of the world
 
 **E1_right (90°)** and **E3_left (270°)**: attach plan + E0 + E2.
 ```
-SHOT E1_right: On the LIGHTNING PLATFORM, facing EAST. The platform's tiles run 12 m to its edge; beyond, open calm sea to the horizon. The left side of the horizon is warm red-orange (toward the sun), fading to violet on the right. Torn orange clouds overhead. At the far right edge, the distant top of the STARFIELD MONOLITH.
+SHOT E1_right: On the LIGHTNING PLATFORM, facing EAST. The platform's tiles run 12 m to its edge; beyond, open calm sea to the horizon. The left side of the horizon is warm red-orange (toward the sun), fading to violet on the right. Torn orange clouds overhead. At the far right edge, the distant top of the STARFIELD MONOLITH. Tile scale is identical to A0: small ~0.5 m tiles, about 25 across the platform's width — never large slabs. The sky overhead is cobalt blue, not brown; red-orange glow only low on the left horizon.
 ```
 ```
 SHOT E3_left: On the LIGHTNING PLATFORM, facing WEST. The platform's tiles run 12 m to its edge; beyond, open calm sea. The right side of the horizon blazes red-orange (the sun is just off-frame right); the left fades to violet-indigo. Torn orange-gold clouds overhead.
