@@ -1,0 +1,180 @@
+<title>Storm Terrace Splats</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<script type="importmap">{"imports":{
+  "three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/",
+  "@sparkjsdev/spark":"https://cdn.jsdelivr.net/npm/@sparkjsdev/spark@2.4.0/dist/spark.module.js"}}</script>
+<style>
+  /* Full-bleed splat canvas; one floating panel top-left, pose readout bottom-right. Single dark look. */
+  :root{--bg:#05060a;--panel:#0b0f1ae0;--line:#2a3550;--fg:#dfe6e8;--muted:#93a3b8;--accent:#93d4dd;--key:#1b2338;color-scheme:dark}
+  html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);font:13px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif;overflow:hidden}
+  canvas{position:fixed;inset:0;width:100vw;height:100vh;display:block;touch-action:none;cursor:grab}
+  canvas:active{cursor:grabbing}
+  #hud{position:fixed;left:calc(12px + env(safe-area-inset-left,0px));top:calc(12px + env(safe-area-inset-top,0px));max-width:min(340px,calc(100vw - 24px));background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:10px 12px;box-sizing:border-box}
+  #hud h1{font-size:14px;margin:0 0 6px;letter-spacing:.02em}
+  kbd{background:var(--key);border-radius:3px;padding:0 4px;font:12px ui-monospace,monospace;color:var(--fg)}
+  #status{color:var(--accent);margin-top:6px;font-variant-numeric:tabular-nums}
+  #bar{height:3px;background:var(--line);border-radius:2px;margin-top:6px;overflow:hidden}
+  #bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .2s}
+  #presets{display:flex;gap:6px;margin-top:8px;align-items:center}
+  #presets select{flex:1;min-width:0;background:var(--key);color:var(--fg);border:1px solid var(--line);border-radius:4px;padding:3px}
+  #presets button,#togg{background:var(--key);color:var(--fg);border:1px solid var(--line);border-radius:4px;padding:3px 8px;cursor:pointer}
+  button:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+  #pose{position:fixed;right:calc(12px + env(safe-area-inset-right,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));background:var(--panel);border-radius:6px;padding:6px 9px;font:12px ui-monospace,monospace;white-space:pre;user-select:all;max-width:calc(100vw - 24px);overflow:hidden}
+  #touch{position:fixed;left:calc(12px + env(safe-area-inset-left,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));display:none;gap:6px}
+  #touch button{width:48px;height:48px;border-radius:8px;background:var(--panel);color:var(--fg);border:1px solid var(--line);font-size:18px}
+  @media (pointer:coarse){#touch{display:flex}}
+  .hide{display:none}
+</style>
+<div id="hud">
+  <h1>Storm Terrace · run 4 splats</h1>
+  <div id="help">
+    Drag to look, or click then move the mouse (<kbd>Esc</kbd> releases)<br>
+    <kbd>W A S D</kbd> move · <kbd>E</kbd> up · <kbd>Q</kbd> down · <kbd>Shift</kbd> fast<br>
+    <kbd>1</kbd>–<kbd>9</kbd> <kbd>0</kbd> presets · <kbd>[</kbd> <kbd>]</kbd> step · <kbd>P</kbd> copy pose · <kbd>H</kbd> hide help
+  </div>
+  <div id="presets"><select id="presetSel" aria-label="Camera preset"></select><button id="togg" type="button">Help</button></div>
+  <div id="status">loading 2,000,000 splats…</div>
+  <div id="bar"><i></i></div>
+</div>
+<div id="touch"><button id="tFwd" type="button" aria-label="Move forward">▲</button><button id="tBack" type="button" aria-label="Move back">▼</button></div>
+<div id="pose"></div>
+<script type="module">
+import * as THREE from 'three';
+import { SparkRenderer, SplatMesh } from '@sparkjsdev/spark';
+
+const PRESETS = [
+  {"name": "start_A0_front", "position": [0, 1.6, 0.0], "quaternion": [0, 0, 0, 1]},
+  {"name": "frame_A_yaw045", "position": [0, 1.6, -0.01], "quaternion": [0, -0.382683432, 0, 0.923879533]},
+  {"name": "frame_A_yaw135", "position": [0, 1.6, -0.01], "quaternion": [0, -0.923879533, 0, 0.382683432]},
+  {"name": "frame_A_yaw225", "position": [0, 1.6, -0.01], "quaternion": [0, -0.923879533, 0, -0.382683432]},
+  {"name": "frame_A_yaw315", "position": [0, 1.6, -0.01], "quaternion": [0, -0.382683432, 0, -0.923879533]},
+  {"name": "frame_P1_z08_yaw000", "position": [2.5, 1.6, -8], "quaternion": [0, 0, 0, 1]},
+  {"name": "frame_P2_z08_yaw285", "position": [2.5, 1.6, -8], "quaternion": [0, -0.608761429, 0, -0.79335334]},
+  {"name": "frame_P3_z16_yaw015", "position": [3, 1.6, -16], "quaternion": [0, -0.130526192, 0, 0.991444861]},
+  {"name": "frame_P4_z16_yaw090", "position": [3, 1.6, -16], "quaternion": [0, -0.707106781, 0, 0.707106781]},
+  {"name": "frame_P5_z24_yaw020", "position": [3.5, 1.6, -24], "quaternion": [0, -0.173648178, 0, 0.984807753]},
+  {"name": "frame_P6_z24_yaw200", "position": [3.5, 1.6, -24], "quaternion": [0, -0.984807753, 0, -0.173648178]},
+  {"name": "frame_P7_z28_yaw340", "position": [3.5, 1.6, -28], "quaternion": [0, -0.173648178, 0, -0.984807753]},
+  {"name": "frame_P8_west_yaw030", "position": [-6, 1.6, -4], "quaternion": [0, -0.258819045, 0, 0.965925826]},
+  {"name": "between_P1_P3", "position": [1.0, 1.6, -12.0], "quaternion": [0, 0.173648178, 0, 0.984807753]},
+  {"name": "overview_from_south", "position": [3, 22, 22], "quaternion": [-0.3007058, 0, 0, 0.95371695]}
+];
+
+const PARTS = ['scene.part0.wasm', 'scene.part1.wasm', 'scene.part2.wasm'];
+const TOTAL = 32674674;
+const $ = (id) => document.getElementById(id);
+const renderer = new THREE.WebGLRenderer({ antialias: false });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+document.body.prepend(renderer.domElement);
+const scene = new THREE.Scene();
+scene.add(new SparkRenderer({ renderer }));
+const camera = new THREE.PerspectiveCamera(58.715, innerWidth / innerHeight, 0.05, 3000);
+addEventListener('resize', () => { renderer.setSize(innerWidth, innerHeight); camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); });
+
+async function loadParts() {
+  const t0 = performance.now();
+  let got = 0;
+  const bufs = await Promise.all(PARTS.map(async (p) => {
+    const r = await fetch(p);
+    if (!r.ok) throw new Error(`${p}: HTTP ${r.status}`);
+    const reader = r.body.getReader(); const chunks = [];
+    for (;;) { const { done, value } = await reader.read(); if (done) break; chunks.push(value); got += value.length;
+      $('bar').firstElementChild.style.width = `${Math.min(100, got / TOTAL * 100).toFixed(1)}%`;
+      $('status').textContent = `downloading ${(got / 1e6).toFixed(1)} / ${(TOTAL / 1e6).toFixed(1)} MB`; }
+    return chunks;
+  }));
+  const all = new Uint8Array(got); let o = 0;
+  for (const chunks of bufs) for (const c of chunks) { all.set(c, o); o += c.length; }
+  $('status').textContent = 'decoding…';
+  const splat = new SplatMesh({ fileBytes: all, fileName: 'scene.spz', fileType: 'spz' });
+  scene.add(splat);
+  await splat.initialized;
+  $('status').textContent = `2,000,000 splats · loaded in ${((performance.now() - t0) / 1000).toFixed(1)} s`;
+  $('bar').classList.add('hide');
+}
+loadParts().catch((e) => { console.error(e); $('status').textContent = `Could not load the splats: ${e.message || e}`; });
+
+const euler = new THREE.Euler(0, 0, 0, 'YXZ');
+let presetIdx = 0;
+const sel = $('presetSel');
+PRESETS.forEach((p, i) => sel.add(new Option(`${i + 1}. ${p.name}`, i)));
+sel.addEventListener('change', () => { goPreset(+sel.value); sel.blur(); });
+function goPreset(i) {
+  presetIdx = (i + PRESETS.length) % PRESETS.length;
+  const p = PRESETS[presetIdx];
+  camera.position.fromArray(p.position); camera.quaternion.fromArray(p.quaternion);
+  euler.setFromQuaternion(camera.quaternion); sel.value = presetIdx;
+}
+goPreset(0);
+$('togg').addEventListener('click', () => $('help').classList.toggle('hide'));
+
+const keys = new Set();
+const canvas = renderer.domElement;
+let drag = null;
+canvas.addEventListener('pointerdown', (e) => { drag = { x: e.clientX, y: e.clientY, moved: false }; canvas.setPointerCapture(e.pointerId); });
+canvas.addEventListener('pointerup', (e) => {
+  if (drag && !drag.moved && e.pointerType === 'mouse') { try { const r = canvas.requestPointerLock(); r?.catch?.(() => {}); } catch {} }
+  drag = null;
+});
+function look(dx, dy) {
+  euler.y -= dx * 0.0025;
+  euler.x = Math.max(-1.55, Math.min(1.55, euler.x - dy * 0.0025));
+  camera.quaternion.setFromEuler(euler);
+}
+canvas.addEventListener('pointermove', (e) => {
+  if (document.pointerLockElement === canvas) return look(e.movementX, e.movementY);
+  if (!drag) return;
+  const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+  if (Math.abs(dx) + Math.abs(dy) > 2) drag.moved = true;
+  drag.x = e.clientX; drag.y = e.clientY; look(dx, dy);
+});
+document.addEventListener('mousemove', (e) => { if (document.pointerLockElement === canvas) look(e.movementX, e.movementY); });
+for (const [id, code] of [['tFwd', 'KeyW'], ['tBack', 'KeyS']]) {
+  const b = $(id);
+  b.addEventListener('pointerdown', () => keys.add(code));
+  for (const ev of ['pointerup', 'pointerleave', 'pointercancel']) b.addEventListener(ev, () => keys.delete(code));
+}
+addEventListener('keyup', (e) => keys.delete(e.code));
+addEventListener('blur', () => keys.clear());
+addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'SELECT') return;
+  keys.add(e.code);
+  if (/^Digit\d$/.test(e.code)) { const d = +e.code.slice(5); goPreset(d === 0 ? 9 : d - 1); }
+  if (e.code === 'BracketLeft') goPreset(presetIdx - 1);
+  if (e.code === 'BracketRight') goPreset(presetIdx + 1);
+  if (e.code === 'KeyH') $('help').classList.toggle('hide');
+  if (e.code === 'KeyP') copyPose();
+  if (e.code === 'Space') e.preventDefault();
+});
+let note = '', noteUntil = 0;
+function copyPose() {
+  const r = (a) => a.map((v) => +v.toFixed(4));
+  const s = JSON.stringify({ name: 'my_view', position: r(camera.position.toArray()), quaternion: r(camera.quaternion.toArray()), coordinateSystem: 'rub' });
+  note = s; noteUntil = performance.now() + 8000;
+  try { navigator.clipboard?.writeText(s).catch(() => {}); } catch {}
+}
+
+const clock = new THREE.Clock();
+const fwd = new THREE.Vector3(), right = new THREE.Vector3(), move = new THREE.Vector3();
+renderer.setAnimationLoop(() => {
+  const dt = Math.min(clock.getDelta(), 0.1);
+  const speed = (keys.has('ShiftLeft') || keys.has('ShiftRight') ? 25 : 4) * dt;
+  camera.getWorldDirection(fwd); fwd.y = 0; fwd.normalize();
+  right.crossVectors(fwd, camera.up).normalize();
+  move.set(0, 0, 0);
+  if (keys.has('KeyW') || keys.has('ArrowUp')) move.add(fwd);
+  if (keys.has('KeyS') || keys.has('ArrowDown')) move.sub(fwd);
+  if (keys.has('KeyD') || keys.has('ArrowRight')) move.add(right);
+  if (keys.has('KeyA') || keys.has('ArrowLeft')) move.sub(right);
+  if (keys.has('KeyE') || keys.has('Space')) move.y += 1;
+  if (keys.has('KeyQ') || keys.has('KeyC')) move.y -= 1;
+  if (move.lengthSq()) camera.position.addScaledVector(move.normalize(), speed);
+  renderer.render(scene, camera);
+  const p = camera.position;
+  let yaw = (-THREE.MathUtils.radToDeg(euler.y)) % 360; if (yaw < 0) yaw += 360;
+  $('pose').textContent = (performance.now() < noteUntil ? 'pose (copied): ' + note + '\n' : '') +
+    `x ${p.x.toFixed(1)}  y ${p.y.toFixed(1)}  z ${p.z.toFixed(1)}  yaw ${yaw.toFixed(0)}°`;
+});
+</script>
