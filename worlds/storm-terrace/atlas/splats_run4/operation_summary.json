@@ -1,0 +1,8 @@
+{
+ "operationId": "58392583b3544511876477c5d6902396",
+ "task": "posedImages2Splats",
+ "state": "SUCCEEDED",
+ "input": "12 atlasChisel run-4 frames (image + returned depth + camera)",
+ "output": "results/refinedSplats_2000000.spz",
+ "world": "same frame as the cameras: Y-up, x east, z = -north, metres; start camera at (0, 1.6, 0) looking -Z"
+}

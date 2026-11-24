@@ -31,10 +31,13 @@ const cams = JSON.parse(fs.readFileSync(camsPath, 'utf8'));
 (async () => {
   const browser = await chromium.launch({ args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader'] });
   const page = await browser.newPage({ viewport: { width: 1280, height: 720 } });
-  page.on('pageerror', e => console.error('pageerror:', e.message));
-  page.on('console', m => { if (m.type() === 'error') console.error('page:', m.text()); });
+  page.on('pageerror', e => console.error('pageerror:', e.message.slice(0, 300)));
+  page.on('console', m => console.error('page.' + m.type() + ':', m.text().slice(0, 300)));
+  page.on('requestfailed', r => console.error('requestfailed:', r.url(), r.failure() && r.failure().errorText));
+  page.on('response', r => { if (r.status() >= 400) console.error('HTTP', r.status(), r.url()); });
   await page.goto(`http://127.0.0.1:${port}/view_splats.html`);
-  await page.waitForFunction('window.ready === true', null, { timeout: 600000 });
+  const wait = Number(process.env.SPLAT_READY_TIMEOUT_MS || 600000);
+  await page.waitForFunction('window.ready === true', null, { timeout: wait });
   for (const [name, cam] of Object.entries(cams)) {
     const url = await page.evaluate(c => window.shoot(c), cam);
     fs.writeFileSync(`${outDir}/${name}.png`, Buffer.from(url.split(',')[1], 'base64'));
