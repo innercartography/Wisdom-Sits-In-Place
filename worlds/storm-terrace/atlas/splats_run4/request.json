@@ -1,0 +1,413 @@
+{
+ "posedFrames": [
+  {
+   "imageAsset": {
+    "assetId": "asset_49004509445dd0613f7cb61d51821203"
+   },
+   "depth": {
+    "depthAsset": {
+     "assetId": "asset_252199fb260c4ffb84555997a019a80a"
+    }
+   },
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      0,
+      1.6,
+      -0.01
+     ],
+     "quaternion": [
+      0,
+      -0.382683432,
+      0,
+      0.923879533
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  },
+  {
+   "imageAsset": {
+    "assetId": "asset_17db681e81110a9cfe9899c46afaf609"
+   },
+   "depth": {
+    "depthAsset": {
+     "assetId": "asset_5003c55dfc453cc7df5489ef1c4537c9"
+    }
+   },
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      0,
+      1.6,
+      -0.01
+     ],
+     "quaternion": [
+      0,
+      -0.923879533,
+      0,
+      0.382683432
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  },
+  {
+   "imageAsset": {
+    "assetId": "asset_e490328d0d7bd7032373956255347de6"
+   },
+   "depth": {
+    "depthAsset": {
+     "assetId": "asset_1b00fbade3aecbede26bfba188395361"
+    }
+   },
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      0,
+      1.6,
+      -0.01
+     ],
+     "quaternion": [
+      0,
+      -0.923879533,
+      0,
+      -0.382683432
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  },
+  {
+   "imageAsset": {
+    "assetId": "asset_cde7bb31650f36f68e328bad93ced82c"
+   },
+   "depth": {
+    "depthAsset": {
+     "assetId": "asset_3c53f2f713a0918b2829e5ea68e7418e"
+    }
+   },
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      0,
+      1.6,
+      -0.01
+     ],
+     "quaternion": [
+      0,
+      -0.382683432,
+      0,
+      -0.923879533
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  },
+  {
+   "imageAsset": {
+    "assetId": "asset_7c3ca7bd1f8ea8a5950147d37d0dad25"
+   },
+   "depth": {
+    "depthAsset": {
+     "assetId": "asset_e8116762e8403c7a38484a12b4cae04c"
+    }
+   },
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      2.5,
+      1.6,
+      -8
+     ],
+     "quaternion": [
+      0,
+      0,
+      0,
+      1
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  },
+  {
+   "imageAsset": {
+    "assetId": "asset_9d60f6e3d5279fa5d20668eb6593c684"
+   },
+   "depth": {
+    "depthAsset": {
+     "assetId": "asset_08e09c28f87da457009f2f847a4835b4"
+    }
+   },
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      2.5,
+      1.6,
+      -8
+     ],
+     "quaternion": [
+      0,
+      -0.608761429,
+      0,
+      -0.79335334
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  },
+  {
+   "imageAsset": {
+    "assetId": "asset_d80f155b2f88466d2d4a86a0df248df8"
+   },
+   "depth": {
+    "depthAsset": {
+     "assetId": "asset_548a1e8bc421eded138258078086df3c"
+    }
+   },
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      3,
+      1.6,
+      -16
+     ],
+     "quaternion": [
+      0,
+      -0.130526192,
+      0,
+      0.991444861
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  },
+  {
+   "imageAsset": {
+    "assetId": "asset_45441e747f87ba91b7dc3cf162b31efe"
+   },
+   "depth": {
+    "depthAsset": {
+     "assetId": "asset_bc9f563096381d74d4200450ebbdc4fd"
+    }
+   },
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      3,
+      1.6,
+      -16
+     ],
+     "quaternion": [
+      0,
+      -0.707106781,
+      0,
+      0.707106781
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  },
+  {
+   "imageAsset": {
+    "assetId": "asset_95e62b0d068643c86fc9ce56466c2187"
+   },
+   "depth": {
+    "depthAsset": {
+     "assetId": "asset_2a389032a19e2c0c79ee2378eac91c9e"
+    }
+   },
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      3.5,
+      1.6,
+      -24
+     ],
+     "quaternion": [
+      0,
+      -0.173648178,
+      0,
+      0.984807753
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  },
+  {
+   "imageAsset": {
+    "assetId": "asset_7d738b75ab8b60cc3abfe887ed13a0a9"
+   },
+   "depth": {
+    "depthAsset": {
+     "assetId": "asset_9ca9d802543a79dfcd63a9f8ad788e89"
+    }
+   },
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      3.5,
+      1.6,
+      -24
+     ],
+     "quaternion": [
+      0,
+      -0.984807753,
+      0,
+      -0.173648178
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  },
+  {
+   "imageAsset": {
+    "assetId": "asset_bbee91035c2f872d44848413da7fe8f3"
+   },
+   "depth": {
+    "depthAsset": {
+     "assetId": "asset_e19420f916bc9b70d55a862d6147d8db"
+    }
+   },
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      3.5,
+      1.6,
+      -28
+     ],
+     "quaternion": [
+      0,
+      -0.173648178,
+      0,
+      -0.984807753
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  },
+  {
+   "imageAsset": {
+    "assetId": "asset_3a09d2c79d32d7bc0db067c1112c9252"
+   },
+   "depth": {
+    "depthAsset": {
+     "assetId": "asset_f6405556a9801d908047b0427e3c59f9"
+    }
+   },
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      -6,
+      1.6,
+      -4
+     ],
+     "quaternion": [
+      0,
+      -0.258819045,
+      0,
+      0.965925826
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  }
+ ],
+ "prompt": "A surreal late-1980s computer-graphics dreamscape at sunset: a vast causeway of small glossy pale aqua-white tiles on a calm dark sea, a narrow black-water channel with a glass ribbon stair, a raised tiled plinth with a reflecting pool, a gnarled tree and a tall blue glass-tile tower, a colossal luminous blue glass slab with a terracotta-tiled overhang, a dark starfield slab, a windswept bent tree, cobalt sky with orange clouds and a red horizon."
+}

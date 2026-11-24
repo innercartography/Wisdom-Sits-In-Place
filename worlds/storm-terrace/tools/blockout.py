@@ -54,26 +54,27 @@ def limb(name, p0, p1, r, mat):
     add(name, m, mat)
 
 
-def tree(name, x, z, base, size=1.0, lean=(1.0, 0.3)):
-    """Gnarled tree: S-curved trunk in three segments, a few branches, and a flat, clumpy crown."""
+def tree(name, x, z, base, size=1.0, lean=(1.0, 0.3), h=1.0, crown=1.0):
+    """Gnarled tree: S-curved trunk in three segments, a few branches, and a flat, clumpy crown.
+    h scales height, crown scales the crown blobs."""
     lx, lz = lean
     s = size
     pts = [np.array([x, base, z]),
-           np.array([x - 0.6 * lx * s, base + 2.5 * s, z - 0.6 * lz * s]),
-           np.array([x + 0.4 * lx * s, base + 5.0 * s, z + 0.4 * lz * s]),
-           np.array([x + 1.4 * lx * s, base + 7.0 * s, z + 1.4 * lz * s])]
+           np.array([x - 0.6 * lx * s, base + 2.5 * s * h, z - 0.6 * lz * s]),
+           np.array([x + 0.4 * lx * s, base + 5.0 * s * h, z + 0.4 * lz * s]),
+           np.array([x + 1.4 * lx * s, base + 7.0 * s * h, z + 1.4 * lz * s])]
     for i in range(3):
         limb(f"{name}_trunk_{i}", pts[i], pts[i + 1], (0.75 - 0.15 * i) * s, "trunk")
     top = pts[3]
     rng = np.random.default_rng(sum(map(ord, name)))
     for i, ang in enumerate(np.linspace(0, 2 * np.pi, 5, endpoint=False) + 0.4):
-        tip = top + np.array([np.cos(ang) * 3.2 * s, 1.2 * s + rng.uniform(0, 1.0) * s, np.sin(ang) * 3.2 * s])
+        tip = top + np.array([np.cos(ang) * 3.2 * s * crown, (1.2 * s + rng.uniform(0, 1.0) * s) * h, np.sin(ang) * 3.2 * s * crown])
         limb(f"{name}_branch_{i}", top, tip, 0.25 * s, "trunk")
-        blob = trimesh.creation.icosphere(subdivisions=2, radius=2.4 * s)
+        blob = trimesh.creation.icosphere(subdivisions=2, radius=2.4 * s * crown)
         blob.apply_scale([1.0, 0.55, 1.0])
         blob.apply_translation(tip + np.array([0, 0.6 * s, 0]))
         add(f"{name}_crown_{i}", blob, "foliage")
-    core = trimesh.creation.icosphere(subdivisions=2, radius=3.0 * s)
+    core = trimesh.creation.icosphere(subdivisions=2, radius=3.0 * s * crown)
     core.apply_scale([1.3, 0.5, 1.3])
     core.apply_translation(top + np.array([0, 2.2 * s, 0]))
     add(f"{name}_crown_core", core, "foliage")
@@ -103,7 +104,7 @@ box("glass_monolith", 12, 16, 0, 70, 17, 40, "glass")
 prism("lintel", [(16, 40), (16, 17), (4, 10), (2, 26)], 55, 58, "lintel")
 box("starfield_monolith", 26, 30, 0, 60, -5, 30, "starfield")
 # bent tree, south gate
-tree("bent_tree", -8, 10, 0, size=1.0, lean=(1.6, 0.5))
+tree("bent_tree", -8, 10, 0, size=1.0, lean=(2.6, 0.8), h=0.75, crown=1.35)
 box("south_gate_west", -12, -8, 0, 12, -182, -178, "glass")
 box("south_gate_east", 8, 12, 0, 12, -182, -178, "glass")
 # optional sea plane (delete in Chisel if the prompt should own the sea)

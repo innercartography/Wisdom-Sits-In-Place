@@ -1,0 +1,350 @@
+{
+ "A_yaw045": {
+  "camera": {
+   "extrinsics": {
+    "position": [
+     0,
+     1.6,
+     -0.01
+    ],
+    "quaternion": [
+     0.0,
+     -0.382683432,
+     0.0,
+     0.923879533
+    ],
+    "coordinateSystem": "rub"
+   },
+   "intrinsics": {
+    "width": 1280,
+    "height": 720,
+    "fx": 640.0,
+    "fy": 640.0,
+    "cx": 640.0,
+    "cy": 360.0
+   }
+  },
+  "zMin": 2.849,
+  "zMax": 352.338,
+  "coverage": 0.959
+ },
+ "A_yaw135": {
+  "camera": {
+   "extrinsics": {
+    "position": [
+     0,
+     1.6,
+     -0.01
+    ],
+    "quaternion": [
+     0.0,
+     -0.923879533,
+     0.0,
+     0.382683432
+    ],
+    "coordinateSystem": "rub"
+   },
+   "intrinsics": {
+    "width": 1280,
+    "height": 720,
+    "fx": 640.0,
+    "fy": 640.0,
+    "cx": 640.0,
+    "cy": 360.0
+   }
+  },
+  "zMin": 2.848,
+  "zMax": 352.954,
+  "coverage": 0.576
+ },
+ "A_yaw225": {
+  "camera": {
+   "extrinsics": {
+    "position": [
+     0,
+     1.6,
+     -0.01
+    ],
+    "quaternion": [
+     0.0,
+     -0.923879533,
+     0.0,
+     -0.382683432
+    ],
+    "coordinateSystem": "rub"
+   },
+   "intrinsics": {
+    "width": 1280,
+    "height": 720,
+    "fx": 640.0,
+    "fy": 640.0,
+    "cx": 640.0,
+    "cy": 360.0
+   }
+  },
+  "zMin": 2.849,
+  "zMax": 352.34,
+  "coverage": 0.493
+ },
+ "A_yaw315": {
+  "camera": {
+   "extrinsics": {
+    "position": [
+     0,
+     1.6,
+     -0.01
+    ],
+    "quaternion": [
+     0.0,
+     -0.382683432,
+     0.0,
+     -0.923879533
+    ],
+    "coordinateSystem": "rub"
+   },
+   "intrinsics": {
+    "width": 1280,
+    "height": 720,
+    "fx": 640.0,
+    "fy": 640.0,
+    "cx": 640.0,
+    "cy": 360.0
+   }
+  },
+  "zMin": 2.848,
+  "zMax": 352.951,
+  "coverage": 0.655
+ },
+ "P1_z08_yaw000": {
+  "camera": {
+   "extrinsics": {
+    "position": [
+     2.5,
+     1.6,
+     -8
+    ],
+    "quaternion": [
+     0.0,
+     -0.0,
+     0.0,
+     1.0
+    ],
+    "coordinateSystem": "rub"
+   },
+   "intrinsics": {
+    "width": 1280,
+    "height": 720,
+    "fx": 640.0,
+    "fy": 640.0,
+    "cx": 640.0,
+    "cy": 360.0
+   }
+  },
+  "zMin": 2.848,
+  "zMax": 353.656,
+  "coverage": 0.744
+ },
+ "P2_z08_yaw285": {
+  "camera": {
+   "extrinsics": {
+    "position": [
+     2.5,
+     1.6,
+     -8
+    ],
+    "quaternion": [
+     0.0,
+     -0.608761429,
+     0.0,
+     -0.79335334
+    ],
+    "coordinateSystem": "rub"
+   },
+   "intrinsics": {
+    "width": 1280,
+    "height": 720,
+    "fx": 640.0,
+    "fy": 640.0,
+    "cx": 640.0,
+    "cy": 360.0
+   }
+  },
+  "zMin": 2.849,
+  "zMax": 354.845,
+  "coverage": 0.641
+ },
+ "P3_z16_yaw015": {
+  "camera": {
+   "extrinsics": {
+    "position": [
+     3.0,
+     1.6,
+     -16
+    ],
+    "quaternion": [
+     0.0,
+     -0.130526192,
+     0.0,
+     0.991444861
+    ],
+    "coordinateSystem": "rub"
+   },
+   "intrinsics": {
+    "width": 1280,
+    "height": 720,
+    "fx": 640.0,
+    "fy": 640.0,
+    "cx": 640.0,
+    "cy": 360.0
+   }
+  },
+  "zMin": 2.849,
+  "zMax": 352.994,
+  "coverage": 0.788
+ },
+ "P4_z16_yaw090": {
+  "camera": {
+   "extrinsics": {
+    "position": [
+     3.0,
+     1.6,
+     -16
+    ],
+    "quaternion": [
+     0.0,
+     -0.707106781,
+     0.0,
+     0.707106781
+    ],
+    "coordinateSystem": "rub"
+   },
+   "intrinsics": {
+    "width": 1280,
+    "height": 720,
+    "fx": 640.0,
+    "fy": 640.0,
+    "cx": 640.0,
+    "cy": 360.0
+   }
+  },
+  "zMin": 2.848,
+  "zMax": 355.457,
+  "coverage": 0.978
+ },
+ "P5_z24_yaw020": {
+  "camera": {
+   "extrinsics": {
+    "position": [
+     3.5,
+     1.6,
+     -24
+    ],
+    "quaternion": [
+     0.0,
+     -0.173648178,
+     0.0,
+     0.984807753
+    ],
+    "coordinateSystem": "rub"
+   },
+   "intrinsics": {
+    "width": 1280,
+    "height": 720,
+    "fx": 640.0,
+    "fy": 640.0,
+    "cx": 640.0,
+    "cy": 360.0
+   }
+  },
+  "zMin": 2.847,
+  "zMax": 352.816,
+  "coverage": 0.793
+ },
+ "P6_z24_yaw200": {
+  "camera": {
+   "extrinsics": {
+    "position": [
+     3.5,
+     1.6,
+     -24
+    ],
+    "quaternion": [
+     0.0,
+     -0.984807753,
+     0.0,
+     -0.173648178
+    ],
+    "coordinateSystem": "rub"
+   },
+   "intrinsics": {
+    "width": 1280,
+    "height": 720,
+    "fx": 640.0,
+    "fy": 640.0,
+    "cx": 640.0,
+    "cy": 360.0
+   }
+  },
+  "zMin": 2.848,
+  "zMax": 351.944,
+  "coverage": 0.648
+ },
+ "P7_z28_yaw340": {
+  "camera": {
+   "extrinsics": {
+    "position": [
+     3.5,
+     1.6,
+     -28
+    ],
+    "quaternion": [
+     0.0,
+     -0.173648178,
+     0.0,
+     -0.984807753
+    ],
+    "coordinateSystem": "rub"
+   },
+   "intrinsics": {
+    "width": 1280,
+    "height": 720,
+    "fx": 640.0,
+    "fy": 640.0,
+    "cx": 640.0,
+    "cy": 360.0
+   }
+  },
+  "zMin": 1.561,
+  "zMax": 356.409,
+  "coverage": 0.617
+ },
+ "P8_west_yaw030": {
+  "camera": {
+   "extrinsics": {
+    "position": [
+     -6,
+     1.6,
+     -4
+    ],
+    "quaternion": [
+     0.0,
+     -0.258819045,
+     0.0,
+     0.965925826
+    ],
+    "coordinateSystem": "rub"
+   },
+   "intrinsics": {
+    "width": 1280,
+    "height": 720,
+    "fx": 640.0,
+    "fy": 640.0,
+    "cx": 640.0,
+    "cy": 360.0
+   }
+  },
+  "zMin": 2.848,
+  "zMax": 354.394,
+  "coverage": 0.893
+ }
+}
