@@ -1,0 +1,71 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>blockout renderer</title>
+<script type="importmap">{"imports":{"three":"./three/build/three.module.js"}}</script>
+</head><body>
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from './three/examples/jsm/loaders/GLTFLoader.js';
+
+const renderer = new THREE.WebGLRenderer({ antialias: false, preserveDrawingBuffer: true });
+document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene();
+scene.add(new THREE.HemisphereLight(0x8899ff, 0x331111, 1.2));
+const sun = new THREE.DirectionalLight(0xffb070, 2.2);
+sun.position.set(-90, 150, -1000);  // low sun, slightly west of north (north = -Z in glTF)
+scene.add(sun);
+
+const depthMat = new THREE.ShaderMaterial({
+  vertexShader: `varying float vz; void main(){ vec4 mv = modelViewMatrix * vec4(position,1.0); vz = -mv.z; gl_Position = projectionMatrix * mv; }`,
+  fragmentShader: `varying float vz; void main(){
+      float d = clamp(floor(vz * 1000.0 + 0.5), 0.0, 16777215.0);
+      float r = floor(d / 65536.0); float g = floor((d - r * 65536.0) / 256.0); float b = d - r * 65536.0 - g * 256.0;
+      gl_FragColor = vec4(r / 255.0, g / 255.0, b / 255.0, 1.0); }`,
+  side: THREE.DoubleSide,
+});
+
+new GLTFLoader().load('./blockout.glb', (gltf) => {
+  gltf.scene.traverse(o => {
+    if (o.isMesh) {
+      const c = o.material.color.clone();
+      o.geometry = o.geometry.toNonIndexed(); o.geometry.computeVertexNormals();  // flat normals for lighting
+      o.material = new THREE.MeshLambertMaterial({ color: c, side: THREE.DoubleSide });
+    }
+  });
+  scene.add(gltf.scene);
+  window.ready = true;
+});
+
+window.renderView = (v, W, H, vfov) => {
+  renderer.setSize(W, H, false);
+  renderer.setPixelRatio(1);
+  const cam = new THREE.PerspectiveCamera(vfov, W / H, 0.05, 5000);
+  // plan coords (x east, y up, z north) -> glTF (x, y, -z)
+  cam.position.set(v.pos[0], v.pos[1], -v.pos[2]);
+  const t = v.yaw * Math.PI / 180;
+  cam.lookAt(v.pos[0] + Math.sin(t), v.pos[1], -(v.pos[2] + Math.cos(t)));
+  cam.updateMatrixWorld();
+
+  // colour pass
+  scene.overrideMaterial = null;
+  scene.background = new THREE.Color(0x1e32aa);
+  scene.fog = new THREE.Fog(0x963c50, 150, 900);
+  renderer.render(scene, cam);
+  const color = renderer.domElement.toDataURL('image/png');
+
+  // depth pass into an exact 8-bit target
+  const rt = new THREE.WebGLRenderTarget(W, H, { type: THREE.UnsignedByteType, minFilter: THREE.NearestFilter, magFilter: THREE.NearestFilter });
+  scene.overrideMaterial = depthMat; scene.background = new THREE.Color(0x000000); scene.fog = null;
+  renderer.setRenderTarget(rt); renderer.render(scene, cam);
+  const buf = new Uint8Array(W * H * 4);
+  renderer.readRenderTargetPixels(rt, 0, 0, W, H, buf);
+  renderer.setRenderTarget(null); rt.dispose();
+  // flip rows (GL origin is bottom-left) and drop alpha
+  const out = new Uint8Array(W * H * 3);
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    const s = ((H - 1 - y) * W + x) * 4, d = (y * W + x) * 3;
+    out[d] = buf[s]; out[d + 1] = buf[s + 1]; out[d + 2] = buf[s + 2];
+  }
+  let bin = ''; for (let i = 0; i < out.length; i += 32768) bin += String.fromCharCode.apply(null, out.subarray(i, i + 32768));
+  return { color, depth: btoa(bin) };
+};
+</script></body></html>

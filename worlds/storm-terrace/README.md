@@ -212,6 +212,51 @@ left and right edges join seamlessly. Gemini doesn't output true
 equirectangular images, so stick to the four-view sets unless you have a
 stitcher.
 
+### Route 3: Chisel blockout, then Atlas (structure first, style second)
+
+The site plan also exists as real 3D geometry, so World Labs can be handed the
+structure directly instead of inferring it from pictures.
+
+| File | What it is |
+|---|---|
+| `source/storm_terrace_blockout.glb` | 31 named meshes, all in metres: deck, walkways, channel and ribbon stair, plinth and pool, tower, glass monolith, lintel, starfield monolith, both trees, south gate, plus an optional sea plane. glTF is Y-up with **north = −Z**, so a camera at the origin, 1.6 m up and looking down −Z, sees A0 |
+| `layout/<view>_layout.png` | the blockout rendered from each of the 17 cameras, 1280×720, to compare against `generated/<view>.png` |
+| `layout/<view>_depth_cm.png` | 16-bit z-depth in **centimetres** (0 = sky; anything beyond 655 m is clipped) |
+| `layout/<view>_depth.npy` | exact float32 z-depth in metres (NaN = sky). Gitignored; regenerate with `python3 tools/render_views.py` (takes ~5 s) |
+| `layout/cameras.json` | camera-to-world 4×4 per view (OpenCV axes: +X right, +Y down, +Z forward), pinhole intrinsics, all in one world frame in metres |
+
+**Chisel (in Marble):**
+1. Open Chisel and import `storm_terrace_blockout.glb`. If your account can't
+   import meshes, rebuild it with boxes using the sizes on the site plan.
+2. Delete `sea_optional` if you want the prompt to decide what the sea looks
+   like. Check the scale: the tower should be 45 m tall and the glass monolith 70 m.
+3. Paste this style prompt:
+
+```
+Late-1980s Japanese computer-graphics art film, ray-traced and airbrushed, soft film grain. Ultramarine-cobalt sky with torn clouds glowing molten orange and gold; a blazing red-orange haze band over a calm sea at the horizon; the sun setting just west of north. All floors, walkways and platforms are glossy pale aqua-white tiles in a tight half-metre grid with dark grout and sparkling specular highlights. The tall slab is luminous blue glass like frozen water-light streaked with white; the narrow tower is a blue glass-tile grid; the far eastern slab is a dark indigo starfield; the cantilevered roof slab has a terracotta-tile underside. Trees are thousands of tiny pixel-like dark-green leaf points on twisted, gnarled trunks. The narrow channel holds mirror-black water with a twisting glass ribbon stair. No people, no text.
+```
+
+4. Generate. The blockout sets the structure and the prompt sets the look.
+   Walk it and compare against the generated views.
+
+**Atlas:**
+- Atlas wants every input tied to a camera in **one shared world frame and
+  distance unit**. `cameras.json` provides exactly that for all 17 generated
+  images.
+- Atlas can also generate views from a prompt plus a **depth layout per
+  target camera**. Pair each `layout/<view>_depth_*` with its camera, add the
+  style prompt above, and include `generated/A0_front.png` as the anchor. Views
+  made this way follow the blockout by construction, so they agree with each
+  other better than anything image-to-image can manage. For more coverage,
+  add cameras to `STATIONS`/`VIEWS` in `tools/render_views.py` and re-run it.
+- The Atlas docs give **1280×720** as the generation target, which is why
+  the layouts are rendered at that size.
+- **Caveats:** Atlas is in early access. Its docs couldn't be read from this
+  environment, so check the exact depth encoding and pose convention it
+  expects and convert from the `.npy` files if needed. Also, the Gemini images
+  match the blockout only roughly. If Atlas struggles with conflicts, give it
+  the depth layouts plus A0 alone.
+
 ---
 
 ## 4. Consistency checklist (before uploading)

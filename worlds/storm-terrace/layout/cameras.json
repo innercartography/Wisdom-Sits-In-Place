@@ -1,0 +1,569 @@
+{
+ "convention": "camera_to_world, OpenCV axes (+X right, +Y down, +Z forward); world: x east, y up, z north, metres; depth = z-depth along +Z",
+ "width": 1280,
+ "height": 720,
+ "hfov_deg": 90.0,
+ "intrinsics": [
+  [
+   640.0000000000001,
+   0,
+   640.0
+  ],
+  [
+   0,
+   640.0000000000001,
+   360.0
+  ],
+  [
+   0,
+   0,
+   1
+  ]
+ ],
+ "views": {
+  "A0_front": {
+   "camera_to_world": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     1.6
+    ],
+    [
+     -0.0,
+     0.0,
+     1.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/A0_front.png",
+   "layout": "layout/A0_front_layout.png",
+   "depth_cm_png": "layout/A0_front_depth_cm.png",
+   "depth_npy": "layout/A0_front_depth.npy"
+  },
+  "A1_right": {
+   "camera_to_world": [
+    [
+     0.0,
+     0.0,
+     1.0,
+     0.0
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     1.6
+    ],
+    [
+     -1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/A1_right.png",
+   "layout": "layout/A1_right_layout.png",
+   "depth_cm_png": "layout/A1_right_depth_cm.png",
+   "depth_npy": "layout/A1_right_depth.npy"
+  },
+  "A2_back": {
+   "camera_to_world": [
+    [
+     -1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     1.6
+    ],
+    [
+     -0.0,
+     0.0,
+     -1.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/A2_back.png",
+   "layout": "layout/A2_back_layout.png",
+   "depth_cm_png": "layout/A2_back_depth_cm.png",
+   "depth_npy": "layout/A2_back_depth.npy"
+  },
+  "A3_left": {
+   "camera_to_world": [
+    [
+     -0.0,
+     0.0,
+     -1.0,
+     0.0
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     1.6
+    ],
+    [
+     1.0,
+     0.0,
+     -0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/A3_left.png",
+   "layout": "layout/A3_left_layout.png",
+   "depth_cm_png": "layout/A3_left_depth_cm.png",
+   "depth_npy": "layout/A3_left_depth.npy"
+  },
+  "B0_front": {
+   "camera_to_world": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     4.0
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     3.1
+    ],
+    [
+     -0.0,
+     0.0,
+     1.0,
+     34.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/B0_front.png",
+   "layout": "layout/B0_front_layout.png",
+   "depth_cm_png": "layout/B0_front_depth_cm.png",
+   "depth_npy": "layout/B0_front_depth.npy"
+  },
+  "B1_right": {
+   "camera_to_world": [
+    [
+     0.0,
+     0.0,
+     1.0,
+     4.0
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     3.1
+    ],
+    [
+     -1.0,
+     0.0,
+     0.0,
+     34.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/B1_right.png",
+   "layout": "layout/B1_right_layout.png",
+   "depth_cm_png": "layout/B1_right_depth_cm.png",
+   "depth_npy": "layout/B1_right_depth.npy"
+  },
+  "B2_back": {
+   "camera_to_world": [
+    [
+     -1.0,
+     0.0,
+     0.0,
+     4.0
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     3.1
+    ],
+    [
+     -0.0,
+     0.0,
+     -1.0,
+     34.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/B2_back.png",
+   "layout": "layout/B2_back_layout.png",
+   "depth_cm_png": "layout/B2_back_depth_cm.png",
+   "depth_npy": "layout/B2_back_depth.npy"
+  },
+  "B3_left": {
+   "camera_to_world": [
+    [
+     -0.0,
+     0.0,
+     -1.0,
+     4.0
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     3.1
+    ],
+    [
+     1.0,
+     0.0,
+     -0.0,
+     34.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/B3_left.png",
+   "layout": "layout/B3_left_layout.png",
+   "depth_cm_png": "layout/B3_left_depth_cm.png",
+   "depth_npy": "layout/B3_left_depth.npy"
+  },
+  "C0_front": {
+   "camera_to_world": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     -0.5
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     -1.4
+    ],
+    [
+     -0.0,
+     0.0,
+     1.0,
+     22.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/C0_front.png",
+   "layout": "layout/C0_front_layout.png",
+   "depth_cm_png": "layout/C0_front_depth_cm.png",
+   "depth_npy": "layout/C0_front_depth.npy"
+  },
+  "C2_back": {
+   "camera_to_world": [
+    [
+     -1.0,
+     0.0,
+     0.0,
+     -0.5
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     -1.4
+    ],
+    [
+     -0.0,
+     0.0,
+     -1.0,
+     22.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/C2_back.png",
+   "layout": "layout/C2_back_layout.png",
+   "depth_cm_png": "layout/C2_back_depth_cm.png",
+   "depth_npy": "layout/C2_back_depth.npy"
+  },
+  "D0_front": {
+   "camera_to_world": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     9.0
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     1.6
+    ],
+    [
+     -0.0,
+     0.0,
+     1.0,
+     22.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/D0_front.png",
+   "layout": "layout/D0_front_layout.png",
+   "depth_cm_png": "layout/D0_front_depth_cm.png",
+   "depth_npy": "layout/D0_front_depth.npy"
+  },
+  "D2_back": {
+   "camera_to_world": [
+    [
+     -1.0,
+     0.0,
+     0.0,
+     9.0
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     1.6
+    ],
+    [
+     -0.0,
+     0.0,
+     -1.0,
+     22.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/D2_back.png",
+   "layout": "layout/D2_back_layout.png",
+   "depth_cm_png": "layout/D2_back_depth_cm.png",
+   "depth_npy": "layout/D2_back_depth.npy"
+  },
+  "D3_left": {
+   "camera_to_world": [
+    [
+     -0.0,
+     0.0,
+     -1.0,
+     9.0
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     1.6
+    ],
+    [
+     1.0,
+     0.0,
+     -0.0,
+     22.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/D3_left.png",
+   "layout": "layout/D3_left_layout.png",
+   "depth_cm_png": "layout/D3_left_depth_cm.png",
+   "depth_npy": "layout/D3_left_depth.npy"
+  },
+  "E0_front": {
+   "camera_to_world": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     1.6
+    ],
+    [
+     -0.0,
+     0.0,
+     1.0,
+     108.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/E0_front.png",
+   "layout": "layout/E0_front_layout.png",
+   "depth_cm_png": "layout/E0_front_depth_cm.png",
+   "depth_npy": "layout/E0_front_depth.npy"
+  },
+  "E1_right": {
+   "camera_to_world": [
+    [
+     0.0,
+     0.0,
+     1.0,
+     0.0
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     1.6
+    ],
+    [
+     -1.0,
+     0.0,
+     0.0,
+     108.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/E1_right.png",
+   "layout": "layout/E1_right_layout.png",
+   "depth_cm_png": "layout/E1_right_depth_cm.png",
+   "depth_npy": "layout/E1_right_depth.npy"
+  },
+  "E2_back": {
+   "camera_to_world": [
+    [
+     -1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     1.6
+    ],
+    [
+     -0.0,
+     0.0,
+     -1.0,
+     108.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/E2_back.png",
+   "layout": "layout/E2_back_layout.png",
+   "depth_cm_png": "layout/E2_back_depth_cm.png",
+   "depth_npy": "layout/E2_back_depth.npy"
+  },
+  "E3_left": {
+   "camera_to_world": [
+    [
+     -0.0,
+     0.0,
+     -1.0,
+     0.0
+    ],
+    [
+     0.0,
+     -1.0,
+     0.0,
+     1.6
+    ],
+    [
+     1.0,
+     0.0,
+     -0.0,
+     108.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/E3_left.png",
+   "layout": "layout/E3_left_layout.png",
+   "depth_cm_png": "layout/E3_left_depth_cm.png",
+   "depth_npy": "layout/E3_left_depth.npy"
+  }
+ }
+}
