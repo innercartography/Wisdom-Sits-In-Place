@@ -21,11 +21,13 @@ FAR_CAP = 400.0  # metres; farther sea counts as no surface so it doesn't squeez
 W, H, F = 1280, 720, 640.0  # 90 deg horizontal FOV
 
 
-def camera_from(pos, yaw):
+def camera_from(pos, yaw, pitch=0.0):
     x, y, z = pos
-    t = math.radians(yaw)
-    # turning right is a negative rotation about +Y
-    q = [0.0, math.sin(-t / 2), 0.0, math.cos(-t / 2)]
+    t, p = math.radians(yaw), math.radians(pitch)
+    # turning right is a negative rotation about +Y; looking up is a positive rotation about the camera's +X.
+    # q = q_yaw * q_pitch (XYZW)
+    sy, cy, sp, cp = math.sin(-t / 2), math.cos(-t / 2), math.sin(p / 2), math.cos(p / 2)
+    q = [cy * sp, sy * cp, -sy * sp, cy * cp]
     return {"extrinsics": {"position": [x, y, -z], "quaternion": [round(v, 9) for v in q], "coordinateSystem": "rub"},
             "intrinsics": {"width": W, "height": H, "fx": F, "fy": F, "cx": W / 2, "cy": H / 2}}
 
@@ -51,7 +53,7 @@ def main():
         p[valid] = np.round(white * (1 - np.log(d[valid] / zmin) / np.log(zmax / zmin)))
         p[valid] = np.clip(p[valid], 1, white)
         Image.fromarray(p.astype(np.uint16)).save(out / f"{view}_logdepth.png")
-        cam = camera_from(custom[view]["pos"], custom[view]["yaw"]) if view in custom else camera(view)
+        cam = camera_from(custom[view]["pos"], custom[view]["yaw"], custom[view].get("pitch", 0)) if view in custom else camera(view)
         frames[view] = {"camera": cam, "zMin": round(zmin, 4), "zMax": round(zmax, 4),
                         "coverage": round(float(valid.mean()), 3)}
         print(view, frames[view]["zMin"], frames[view]["zMax"], "surface fraction", frames[view]["coverage"])

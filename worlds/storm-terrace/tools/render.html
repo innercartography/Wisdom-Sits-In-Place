@@ -41,8 +41,8 @@ window.renderView = (v, W, H, vfov) => {
   const cam = new THREE.PerspectiveCamera(vfov, W / H, 0.05, 5000);
   // plan coords (x east, y up, z north) -> glTF (x, y, -z)
   cam.position.set(v.pos[0], v.pos[1], -v.pos[2]);
-  const t = v.yaw * Math.PI / 180;
-  cam.lookAt(v.pos[0] + Math.sin(t), v.pos[1], -(v.pos[2] + Math.cos(t)));
+  const t = v.yaw * Math.PI / 180, pt = (v.pitch || 0) * Math.PI / 180;
+  cam.lookAt(v.pos[0] + Math.sin(t) * Math.cos(pt), v.pos[1] + Math.sin(pt), -(v.pos[2] + Math.cos(t) * Math.cos(pt)));
   cam.updateMatrixWorld();
 
   // colour pass

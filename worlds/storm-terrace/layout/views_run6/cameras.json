@@ -1,0 +1,505 @@
+{
+ "convention": "camera_to_world, OpenCV axes (+X right, +Y down, +Z forward); world: x east, y up, z north, metres; depth = z-depth along +Z",
+ "width": 1280,
+ "height": 720,
+ "hfov_deg": 90.0,
+ "intrinsics": [
+  [
+   640.0000000000001,
+   0,
+   640.0
+  ],
+  [
+   0,
+   640.0000000000001,
+   360.0
+  ],
+  [
+   0,
+   0,
+   1
+  ]
+ ],
+ "views": {
+  "U01_A_yaw000_up30": {
+   "camera_to_world": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     -0.866025,
+     0.5,
+     1.6
+    ],
+    [
+     -0.0,
+     0.5,
+     0.866025,
+     0.01
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/U01_A_yaw000_up30.png",
+   "layout": "layout/U01_A_yaw000_up30_layout.png",
+   "depth_cm_png": "layout/U01_A_yaw000_up30_depth_cm.png",
+   "depth_npy": "layout/U01_A_yaw000_up30_depth.npy"
+  },
+  "U02_A_yaw050_up30": {
+   "camera_to_world": [
+    [
+     0.642788,
+     0.383022,
+     0.663414,
+     0.0
+    ],
+    [
+     0.0,
+     -0.866025,
+     0.5,
+     1.6
+    ],
+    [
+     -0.766044,
+     0.321394,
+     0.55667,
+     0.01
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/U02_A_yaw050_up30.png",
+   "layout": "layout/U02_A_yaw050_up30_layout.png",
+   "depth_cm_png": "layout/U02_A_yaw050_up30_depth_cm.png",
+   "depth_npy": "layout/U02_A_yaw050_up30_depth.npy"
+  },
+  "U03_z08_yaw020_up55": {
+   "camera_to_world": [
+    [
+     0.939693,
+     0.280166,
+     0.196175,
+     2.5
+    ],
+    [
+     0.0,
+     -0.573576,
+     0.819152,
+     1.6
+    ],
+    [
+     -0.34202,
+     0.769751,
+     0.538986,
+     8.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/U03_z08_yaw020_up55.png",
+   "layout": "layout/U03_z08_yaw020_up55_layout.png",
+   "depth_cm_png": "layout/U03_z08_yaw020_up55_depth_cm.png",
+   "depth_npy": "layout/U03_z08_yaw020_up55_depth.npy"
+  },
+  "U04_z16_yaw070_up40": {
+   "camera_to_world": [
+    [
+     0.34202,
+     0.604023,
+     0.719846,
+     3.0
+    ],
+    [
+     0.0,
+     -0.766044,
+     0.642788,
+     1.6
+    ],
+    [
+     -0.939693,
+     0.219846,
+     0.262003,
+     16.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/U04_z16_yaw070_up40.png",
+   "layout": "layout/U04_z16_yaw070_up40_layout.png",
+   "depth_cm_png": "layout/U04_z16_yaw070_up40_depth_cm.png",
+   "depth_npy": "layout/U04_z16_yaw070_up40_depth.npy"
+  },
+  "U05_z22_yaw000_up65": {
+   "camera_to_world": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     6.0
+    ],
+    [
+     0.0,
+     -0.422618,
+     0.906308,
+     1.6
+    ],
+    [
+     -0.0,
+     0.906308,
+     0.422618,
+     22.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/U05_z22_yaw000_up65.png",
+   "layout": "layout/U05_z22_yaw000_up65_layout.png",
+   "depth_cm_png": "layout/U05_z22_yaw000_up65_depth_cm.png",
+   "depth_npy": "layout/U05_z22_yaw000_up65_depth.npy"
+  },
+  "U06_z24_yaw090_up45": {
+   "camera_to_world": [
+    [
+     0.0,
+     0.707107,
+     0.707107,
+     3.5
+    ],
+    [
+     0.0,
+     -0.707107,
+     0.707107,
+     1.6
+    ],
+    [
+     -1.0,
+     0.0,
+     0.0,
+     24.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/U06_z24_yaw090_up45.png",
+   "layout": "layout/U06_z24_yaw090_up45_layout.png",
+   "depth_cm_png": "layout/U06_z24_yaw090_up45_depth_cm.png",
+   "depth_npy": "layout/U06_z24_yaw090_up45_depth.npy"
+  },
+  "U07_z28_yaw025_up35": {
+   "camera_to_world": [
+    [
+     0.906308,
+     0.242404,
+     0.346189,
+     3.5
+    ],
+    [
+     0.0,
+     -0.819152,
+     0.573576,
+     1.6
+    ],
+    [
+     -0.422618,
+     0.519837,
+     0.742404,
+     28.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/U07_z28_yaw025_up35.png",
+   "layout": "layout/U07_z28_yaw025_up35_layout.png",
+   "depth_cm_png": "layout/U07_z28_yaw025_up35_depth_cm.png",
+   "depth_npy": "layout/U07_z28_yaw025_up35_depth.npy"
+  },
+  "U08_z16_yaw095_up35": {
+   "camera_to_world": [
+    [
+     -0.087156,
+     0.571394,
+     0.816035,
+     3.0
+    ],
+    [
+     0.0,
+     -0.819152,
+     0.573576,
+     1.6
+    ],
+    [
+     -0.996195,
+     -0.04999,
+     -0.071394,
+     16.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/U08_z16_yaw095_up35.png",
+   "layout": "layout/U08_z16_yaw095_up35_layout.png",
+   "depth_cm_png": "layout/U08_z16_yaw095_up35_depth_cm.png",
+   "depth_npy": "layout/U08_z16_yaw095_up35_depth.npy"
+  },
+  "U09_east_yaw330_up30": {
+   "camera_to_world": [
+    [
+     0.866025,
+     -0.25,
+     -0.433013,
+     20.0
+    ],
+    [
+     0.0,
+     -0.866025,
+     0.5,
+     1.6
+    ],
+    [
+     0.5,
+     0.433013,
+     0.75,
+     10.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/U09_east_yaw330_up30.png",
+   "layout": "layout/U09_east_yaw330_up30_layout.png",
+   "depth_cm_png": "layout/U09_east_yaw330_up30_depth_cm.png",
+   "depth_npy": "layout/U09_east_yaw330_up30_depth.npy"
+  },
+  "U10_east_yaw060_up35": {
+   "camera_to_world": [
+    [
+     0.5,
+     0.496732,
+     0.709406,
+     20.0
+    ],
+    [
+     0.0,
+     -0.819152,
+     0.573576,
+     1.6
+    ],
+    [
+     -0.866025,
+     0.286788,
+     0.409576,
+     10.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/U10_east_yaw060_up35.png",
+   "layout": "layout/U10_east_yaw060_up35_layout.png",
+   "depth_cm_png": "layout/U10_east_yaw060_up35_depth_cm.png",
+   "depth_npy": "layout/U10_east_yaw060_up35_depth.npy"
+  },
+  "S11_south_yaw180": {
+   "camera_to_world": [
+    [
+     -1.0,
+     0.0,
+     0.0,
+     1.0
+    ],
+    [
+     0.0,
+     -0.996195,
+     0.087156,
+     1.6
+    ],
+    [
+     -0.0,
+     -0.087156,
+     -0.996195,
+     -4.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/S11_south_yaw180.png",
+   "layout": "layout/S11_south_yaw180_layout.png",
+   "depth_cm_png": "layout/S11_south_yaw180_depth_cm.png",
+   "depth_npy": "layout/S11_south_yaw180_depth.npy"
+  },
+  "S12_south_yaw140": {
+   "camera_to_world": [
+    [
+     -0.766044,
+     0.111619,
+     0.633022,
+     1.0
+    ],
+    [
+     0.0,
+     -0.984808,
+     0.173648,
+     1.6
+    ],
+    [
+     -0.642788,
+     -0.133022,
+     -0.754407,
+     -4.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/S12_south_yaw140.png",
+   "layout": "layout/S12_south_yaw140_layout.png",
+   "depth_cm_png": "layout/S12_south_yaw140_depth_cm.png",
+   "depth_npy": "layout/S12_south_yaw140_depth.npy"
+  },
+  "S13_z24_yaw270": {
+   "camera_to_world": [
+    [
+     -0.0,
+     -0.173648,
+     -0.984808,
+     3.5
+    ],
+    [
+     0.0,
+     -0.984808,
+     0.173648,
+     1.6
+    ],
+    [
+     1.0,
+     -0.0,
+     -0.0,
+     24.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/S13_z24_yaw270.png",
+   "layout": "layout/S13_z24_yaw270_layout.png",
+   "depth_cm_png": "layout/S13_z24_yaw270_depth_cm.png",
+   "depth_npy": "layout/S13_z24_yaw270_depth.npy"
+  },
+  "N14_z64_yaw190_up25": {
+   "camera_to_world": [
+    [
+     -0.984808,
+     -0.073387,
+     -0.157379,
+     10.0
+    ],
+    [
+     0.0,
+     -0.906308,
+     0.422618,
+     1.6
+    ],
+    [
+     0.173648,
+     -0.416198,
+     -0.892539,
+     64.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/N14_z64_yaw190_up25.png",
+   "layout": "layout/N14_z64_yaw190_up25_layout.png",
+   "depth_cm_png": "layout/N14_z64_yaw190_up25_depth_cm.png",
+   "depth_npy": "layout/N14_z64_yaw190_up25_depth.npy"
+  },
+  "N15_z64_yaw000": {
+   "camera_to_world": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     10.0
+    ],
+    [
+     0.0,
+     -0.996195,
+     0.087156,
+     1.6
+    ],
+    [
+     -0.0,
+     0.087156,
+     0.996195,
+     64.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "image": "generated/N15_z64_yaw000.png",
+   "layout": "layout/N15_z64_yaw000_layout.png",
+   "depth_cm_png": "layout/N15_z64_yaw000_depth_cm.png",
+   "depth_npy": "layout/N15_z64_yaw000_depth.npy"
+  }
+ }
+}

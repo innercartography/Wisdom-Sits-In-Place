@@ -1,0 +1,20 @@
+{
+ "note": "Run 6 target cameras: tilted-up views of the lintel, monoliths and tower, plus south/west/north coverage. pos = site-plan metres [x east, y up (eye), z north]; yaw clockwise from north; pitch up in degrees.",
+ "views": [
+  {"name": "U01_A_yaw000_up30",  "pos": [0, 1.6, 0.01], "yaw": 0,   "pitch": 30},
+  {"name": "U02_A_yaw050_up30",  "pos": [0, 1.6, 0.01], "yaw": 50,  "pitch": 30},
+  {"name": "U03_z08_yaw020_up55","pos": [2.5, 1.6, 8],  "yaw": 20,  "pitch": 55},
+  {"name": "U04_z16_yaw070_up40","pos": [3, 1.6, 16],   "yaw": 70,  "pitch": 40},
+  {"name": "U05_z22_yaw000_up65","pos": [6, 1.6, 22],   "yaw": 0,   "pitch": 65},
+  {"name": "U06_z24_yaw090_up45","pos": [3.5, 1.6, 24], "yaw": 90,  "pitch": 45},
+  {"name": "U07_z28_yaw025_up35","pos": [3.5, 1.6, 28], "yaw": 25,  "pitch": 35},
+  {"name": "U08_z16_yaw095_up35","pos": [3, 1.6, 16],   "yaw": 95,  "pitch": 35},
+  {"name": "U09_east_yaw330_up30","pos": [20, 1.6, 10], "yaw": 330, "pitch": 30},
+  {"name": "U10_east_yaw060_up35","pos": [20, 1.6, 10], "yaw": 60,  "pitch": 35},
+  {"name": "S11_south_yaw180",   "pos": [1, 1.6, -4],   "yaw": 180, "pitch": 5},
+  {"name": "S12_south_yaw140",   "pos": [1, 1.6, -4],   "yaw": 140, "pitch": 10},
+  {"name": "S13_z24_yaw270",     "pos": [3.5, 1.6, 24], "yaw": 270, "pitch": 10},
+  {"name": "N14_z64_yaw190_up25","pos": [10, 1.6, 64],  "yaw": 190, "pitch": 25},
+  {"name": "N15_z64_yaw000",     "pos": [10, 1.6, 64],  "yaw": 0,   "pitch": 5}
+ ]
+}

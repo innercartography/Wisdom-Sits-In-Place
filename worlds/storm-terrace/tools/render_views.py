@@ -44,12 +44,12 @@ def three_dir():
     return pkg
 
 
-def camera(pos, yaw):
-    t = np.radians(yaw)
-    fwd = np.array([np.sin(t), 0, np.cos(t)])
+def camera(pos, yaw, pitch=0.0):
+    t, p = np.radians(yaw), np.radians(pitch)
+    fwd = np.array([np.sin(t) * np.cos(p), np.sin(p), np.cos(t) * np.cos(p)])
     right = np.array([np.cos(t), 0, -np.sin(t)])
     c2w = np.eye(4)
-    c2w[:3, 0], c2w[:3, 1], c2w[:3, 2], c2w[:3, 3] = right, [0, -1, 0], fwd, pos
+    c2w[:3, 0], c2w[:3, 1], c2w[:3, 2], c2w[:3, 3] = right, np.cross(right, fwd), fwd, pos
     return c2w
 
 
@@ -93,7 +93,7 @@ def main():
         m = np.where(mm > 0, mm / 1000.0, np.nan).astype(np.float32)
         np.save(out / f"{v['name']}_depth.npy", m)
         Image.fromarray(np.nan_to_num(m * 100, nan=0).clip(0, 65535).astype(np.uint16)).save(out / f"{v['name']}_depth_cm.png")
-        cams["views"][v["name"]] = {"camera_to_world": camera(np.array(v["pos"], float), v["yaw"]).round(6).tolist(),
+        cams["views"][v["name"]] = {"camera_to_world": camera(np.array(v["pos"], float), v["yaw"], v.get("pitch", 0)).round(6).tolist(),
                                     "image": f"generated/{v['name']}.png", "layout": f"layout/{v['name']}_layout.png",
                                     "depth_cm_png": f"layout/{v['name']}_depth_cm.png", "depth_npy": f"layout/{v['name']}_depth.npy"}
     (out / "cameras.json").write_text(json.dumps(cams, indent=1))
