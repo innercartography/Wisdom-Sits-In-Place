@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Storm Terrace Splats</title>
+<!-- Local, GPU-accelerated splat viewer. Open this file in Chrome/Edge (double-click works),
+     then drop an .spz/.ply onto the page. Or serve the world folder and open
+     viewer/index.html?spz=../atlas/splats_run4/results/refinedSplats_2000000.spz -->
+<script type="importmap">{"imports":{
+  "three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/",
+  "@sparkjsdev/spark":"https://cdn.jsdelivr.net/npm/@sparkjsdev/spark@2.4.0/dist/spark.module.js"}}</script>
+<style>
+  html,body{margin:0;height:100%;background:#05060a;color:#dfe6e8;font:13px/1.45 system-ui,sans-serif;overflow:hidden}
+  canvas{display:block;width:100vw;height:100vh}
+  #hud{position:fixed;left:12px;top:12px;max-width:340px;background:#0b0f1acc;border:1px solid #2a3550;border-radius:8px;padding:10px 12px}
+  #hud h1{font-size:14px;margin:0 0 6px}
+  #hud kbd{background:#1b2338;border-radius:3px;padding:0 4px;font:12px ui-monospace,monospace}
+  #status{color:#93d4dd;margin-top:6px}
+  #pose{position:fixed;right:12px;bottom:12px;background:#0b0f1acc;border-radius:6px;padding:6px 9px;font:12px ui-monospace,monospace;white-space:pre}
+  #drop{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+  #drop div{border:2px dashed #456c9d;border-radius:12px;padding:28px 36px;background:#0b0f1aee;pointer-events:auto;text-align:center}
+  #drop.hidden{display:none}
+  .hide{display:none}
+</style>
+</head>
+<body>
+<div id="drop"><div>Drop an <b>.spz</b> or <b>.ply</b> file here<br><br><input type="file" id="pick" accept=".spz,.ply,.splat,.ksplat"></div></div>
+<div id="hud">
+  <h1>Storm Terrace splats</h1>
+  <div id="help">
+    Click the view to look around (<kbd>Esc</kbd> releases the mouse)<br>
+    <kbd>W A S D</kbd> move · <kbd>E</kbd>/<kbd>Space</kbd> up · <kbd>Q</kbd>/<kbd>C</kbd> down · <kbd>Shift</kbd> fast<br>
+    <kbd>1</kbd>–<kbd>9</kbd>, <kbd>0</kbd> camera presets · <kbd>[</kbd> <kbd>]</kbd> previous/next preset<br>
+    <kbd>P</kbd> copy camera pose JSON · <kbd>K</kbd> save screenshot · <kbd>H</kbd> hide this panel
+  </div>
+  <div id="status">waiting for a file…</div>
+</div>
+<div id="pose"></div>
+<script type="module">
+import * as THREE from 'three';
+import { SparkRenderer, SplatMesh } from '@sparkjsdev/spark';
+
+// Cameras in the Atlas world ("rub" = three.js camera axes, Y up, metres).
+// The frame_* entries are the 12 atlasChisel run-4 views the splats were reconstructed from.
+const PRESETS = [
+  {"name": "start_A0_front", "position": [0, 1.6, 0.0], "quaternion": [0, 0, 0, 1]},
+  {"name": "frame_A_yaw045", "position": [0, 1.6, -0.01], "quaternion": [0, -0.382683432, 0, 0.923879533]},
+  {"name": "frame_A_yaw135", "position": [0, 1.6, -0.01], "quaternion": [0, -0.923879533, 0, 0.382683432]},
+  {"name": "frame_A_yaw225", "position": [0, 1.6, -0.01], "quaternion": [0, -0.923879533, 0, -0.382683432]},
+  {"name": "frame_A_yaw315", "position": [0, 1.6, -0.01], "quaternion": [0, -0.382683432, 0, -0.923879533]},
+  {"name": "frame_P1_z08_yaw000", "position": [2.5, 1.6, -8], "quaternion": [0, 0, 0, 1]},
+  {"name": "frame_P2_z08_yaw285", "position": [2.5, 1.6, -8], "quaternion": [0, -0.608761429, 0, -0.79335334]},
+  {"name": "frame_P3_z16_yaw015", "position": [3, 1.6, -16], "quaternion": [0, -0.130526192, 0, 0.991444861]},
+  {"name": "frame_P4_z16_yaw090", "position": [3, 1.6, -16], "quaternion": [0, -0.707106781, 0, 0.707106781]},
+  {"name": "frame_P5_z24_yaw020", "position": [3.5, 1.6, -24], "quaternion": [0, -0.173648178, 0, 0.984807753]},
+  {"name": "frame_P6_z24_yaw200", "position": [3.5, 1.6, -24], "quaternion": [0, -0.984807753, 0, -0.173648178]},
+  {"name": "frame_P7_z28_yaw340", "position": [3.5, 1.6, -28], "quaternion": [0, -0.173648178, 0, -0.984807753]},
+  {"name": "frame_P8_west_yaw030", "position": [-6, 1.6, -4], "quaternion": [0, -0.258819045, 0, 0.965925826]},
+  {"name": "between_P1_P3", "position": [1.0, 1.6, -12.0], "quaternion": [0, 0.173648178, 0, 0.984807753]},
+  {"name": "overview_from_south", "position": [3, 22, 22], "quaternion": [-0.3007058, 0, 0, 0.95371695]}
+];
+
+const $ = (id) => document.getElementById(id);
+const renderer = new THREE.WebGLRenderer({ antialias: false, preserveDrawingBuffer: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+document.body.prepend(renderer.domElement);
+const scene = new THREE.Scene();
+scene.add(new SparkRenderer({ renderer }));
+// Vertical FOV matching the Atlas frames (fy=640 at 720 px tall).
+const camera = new THREE.PerspectiveCamera(58.715, innerWidth / innerHeight, 0.05, 3000);
+addEventListener('resize', () => {
+  renderer.setSize(innerWidth, innerHeight);
+  camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix();
+});
+
+// ---- loading ----
+let splat = null, sceneName = 'scene';
+async function load(opts, label) {
+  if (splat) { scene.remove(splat); splat.dispose?.(); }
+  $('status').textContent = `loading ${label}…`;
+  $('drop').classList.add('hidden');
+  const t0 = performance.now();
+  try {
+    splat = new SplatMesh(opts);
+    scene.add(splat);
+    await splat.initialized;
+    sceneName = label.replace(/\.[^.]+$/, '');
+    const n = splat.packedSplats?.numSplats ?? splat.numSplats ?? '?';
+    $('status').textContent = `${label}: ${typeof n === 'number' ? n.toLocaleString() : n} splats, ${((performance.now() - t0) / 1000).toFixed(1)} s`;
+    window.ready = true;
+  } catch (e) {
+    console.error(e);
+    $('status').textContent = `could not load ${label}: ${e.message || e}`;
+    $('drop').classList.remove('hidden');
+  }
+}
+async function loadFile(file) {
+  const ext = file.name.split('.').pop().toLowerCase();
+  await load({ fileBytes: new Uint8Array(await file.arrayBuffer()), fileName: file.name, fileType: ext }, file.name);
+}
+$('pick').addEventListener('change', (e) => e.target.files[0] && loadFile(e.target.files[0]));
+addEventListener('dragover', (e) => e.preventDefault());
+addEventListener('drop', (e) => { e.preventDefault(); const f = e.dataTransfer.files[0]; if (f) loadFile(f); });
+const qs = new URLSearchParams(location.search);
+if (qs.get('spz')) load({ url: qs.get('spz') }, qs.get('spz').split('/').pop());
+
+// ---- camera / controls ----
+const euler = new THREE.Euler(0, 0, 0, 'YXZ');
+let presetIdx = 0;
+function goPreset(i) {
+  presetIdx = (i + PRESETS.length) % PRESETS.length;
+  const p = PRESETS[presetIdx];
+  camera.position.fromArray(p.position);
+  camera.quaternion.fromArray(p.quaternion);
+  euler.setFromQuaternion(camera.quaternion);
+  flash(`${presetIdx + 1}. ${p.name}`);
+}
+let flashText = '', flashUntil = 0;
+function flash(t) { flashText = t; flashUntil = performance.now() + 2500; }
+goPreset(0);
+
+const keys = new Set();
+const canvas = renderer.domElement;
+canvas.addEventListener('click', () => canvas.requestPointerLock());
+addEventListener('mousemove', (e) => {
+  if (document.pointerLockElement !== canvas) return;
+  euler.y -= e.movementX * 0.0022;
+  euler.x = Math.max(-1.55, Math.min(1.55, euler.x - e.movementY * 0.0022));
+  camera.quaternion.setFromEuler(euler);
+});
+addEventListener('keyup', (e) => keys.delete(e.code));
+addEventListener('keydown', (e) => {
+  keys.add(e.code);
+  if (/^Digit\d$/.test(e.code)) { const d = +e.code.slice(5); goPreset(d === 0 ? 9 : d - 1); }
+  if (e.code === 'BracketLeft') goPreset(presetIdx - 1);
+  if (e.code === 'BracketRight') goPreset(presetIdx + 1);
+  if (e.code === 'KeyH') $('help').classList.toggle('hide');
+  if (e.code === 'KeyP') copyPose();
+  if (e.code === 'KeyK') screenshot();
+  if (e.code === 'Space') e.preventDefault();
+});
+function poseJSON() {
+  const r = (a) => a.map((v) => +v.toFixed(4));
+  return { name: 'my_view', position: r(camera.position.toArray()), quaternion: r(camera.quaternion.toArray()), coordinateSystem: 'rub' };
+}
+function copyPose() {
+  const s = JSON.stringify(poseJSON());
+  navigator.clipboard?.writeText(s).then(() => flash('pose copied to clipboard'), () => flash('see console for pose'));
+  console.log(s);
+}
+function screenshot() {
+  renderer.render(scene, camera);
+  const a = document.createElement('a');
+  a.download = `${sceneName}_${PRESETS[presetIdx]?.name ?? 'view'}_${Date.now()}.png`;
+  a.href = renderer.domElement.toDataURL('image/png'); a.click();
+  flash('screenshot saved');
+}
+
+const clock = new THREE.Clock();
+const fwd = new THREE.Vector3(), right = new THREE.Vector3(), move = new THREE.Vector3();
+renderer.setAnimationLoop(() => {
+  const dt = Math.min(clock.getDelta(), 0.1);
+  const speed = (keys.has('ShiftLeft') || keys.has('ShiftRight') ? 25 : 4) * dt;
+  camera.getWorldDirection(fwd); fwd.y = 0; fwd.normalize();
+  right.crossVectors(fwd, camera.up).normalize();
+  move.set(0, 0, 0);
+  if (keys.has('KeyW')) move.add(fwd);
+  if (keys.has('KeyS')) move.sub(fwd);
+  if (keys.has('KeyD')) move.add(right);
+  if (keys.has('KeyA')) move.sub(right);
+  if (keys.has('KeyE') || keys.has('Space')) move.y += 1;
+  if (keys.has('KeyQ') || keys.has('KeyC')) move.y -= 1;
+  if (move.lengthSq()) camera.position.addScaledVector(move.normalize(), speed);
+  renderer.render(scene, camera);
+  const p = camera.position;
+  $('pose').textContent = (performance.now() < flashUntil ? flashText + '\n' : '') +
+    `x ${p.x.toFixed(1)}  y ${p.y.toFixed(1)}  z ${p.z.toFixed(1)}  yaw ${(-THREE.MathUtils.radToDeg(euler.y)).toFixed(0)}°`;
+});
+</script>
+</body>
+</html>
