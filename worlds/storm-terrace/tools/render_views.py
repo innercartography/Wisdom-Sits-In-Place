@@ -8,6 +8,7 @@ Outputs in ../layout/:
   <view>_layout.png      flat-lit colour render of the blockout (check against generated/<view>.png)
   <view>_depth_cm.png    16-bit z-depth in centimetres (0..655 m, clipped), 0 = sky
   <view>_depth.npy       float32 z-depth in metres, NaN = sky (exact, unclipped)
+  <view>_keepmask.png    8-bit keep mask for atlasChisel: black over the (dilated) trees, white elsewhere
   cameras.json           camera-to-world 4x4 (OpenCV axes: +X right, +Y down, +Z forward) and pinhole
                          intrinsics per view, world frame = site plan (x east, y up, z north, metres)
 
@@ -16,13 +17,14 @@ Usage: python3 tools/render_views.py [width]     (default 1280 -> 1280x720, Atla
 import functools, http.server, json, os, shutil, subprocess, sys, tempfile, threading
 from pathlib import Path
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageFilter
 
 ROOT = Path(__file__).resolve().parent.parent
 TOOLS = ROOT / "tools"
 W = int(sys.argv[1]) if len(sys.argv) > 1 else 1280
 H = round(W * 9 / 16)
 HFOV = 90.0
+MASK_GROW = 31  # px dilation of tree regions in the keep masks (odd)
 VFOV = float(np.degrees(2 * np.arctan(np.tan(np.radians(HFOV / 2)) * H / W)))
 STATIONS = {"A": (0, 1.6, 0), "B": (4, 3.1, 34), "C": (-0.5, -1.4, 22), "D": (9, 1.6, 22), "E": (0, 1.6, 108)}
 VIEWS = {"A": "0123", "B": "0123", "C": "02", "D": "023", "E": "0123"}
@@ -76,6 +78,11 @@ def main():
         raw = np.fromfile(out / f"{v['name']}_depth.rgb24", np.uint8).reshape(H, W, 3).astype(np.uint32)
         mm = (raw[..., 0] << 16) | (raw[..., 1] << 8) | raw[..., 2]
         (out / f"{v['name']}_depth.rgb24").unlink()
+        trees = np.fromfile(out / f"{v['name']}_trees.u8", np.uint8).reshape(H, W) > 0
+        (out / f"{v['name']}_trees.u8").unlink()
+        # keep mask for atlasChisel: white = known layout, black = tree regions left to the model (dilated)
+        tm = Image.fromarray((trees * 255).astype(np.uint8)).filter(ImageFilter.MaxFilter(MASK_GROW))
+        Image.fromarray(255 - np.asarray(tm)).save(out / f"{v['name']}_keepmask.png")
         m = np.where(mm > 0, mm / 1000.0, np.nan).astype(np.float32)
         np.save(out / f"{v['name']}_depth.npy", m)
         Image.fromarray(np.nan_to_num(m * 100, nan=0).clip(0, 65535).astype(np.uint16)).save(out / f"{v['name']}_depth_cm.png")

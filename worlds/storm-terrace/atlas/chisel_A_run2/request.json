@@ -1,0 +1,275 @@
+{
+ "targetFrames": [
+  {
+   "camera": {
+    "extrinsics": {
+     "position": [
+      0,
+      1.6,
+      0
+     ],
+     "quaternion": [
+      0.0,
+      -0.0,
+      0.0,
+      1.0
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   },
+   "depth": {
+    "logDepthAsset": {
+     "assetId": "asset_3a6ef515bb0a4abc96241214b6c380d3"
+    },
+    "zMin": 2.849,
+    "zMax": 351.923
+   },
+   "maskAsset": {
+    "assetId": "asset_fc2c51155bf74712a44419e950cf97e5"
+   }
+  },
+  {
+   "camera": {
+    "extrinsics": {
+     "position": [
+      0,
+      1.6,
+      0
+     ],
+     "quaternion": [
+      0.0,
+      -0.707106781,
+      0.0,
+      0.707106781
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   },
+   "depth": {
+    "logDepthAsset": {
+     "assetId": "asset_d560ba3d4ae04e7a97c75a39f1f85717"
+    },
+    "zMin": 2.848,
+    "zMax": 351.923
+   },
+   "maskAsset": {
+    "assetId": "asset_b87b89addc804342aaab94c4aeb1054f"
+   }
+  },
+  {
+   "camera": {
+    "extrinsics": {
+     "position": [
+      0,
+      1.6,
+      0
+     ],
+     "quaternion": [
+      0.0,
+      -1.0,
+      0.0,
+      0.0
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   },
+   "depth": {
+    "logDepthAsset": {
+     "assetId": "asset_dd48fc8533a64c07b163cfc78fb6c6f1"
+    },
+    "zMin": 2.848,
+    "zMax": 351.923
+   },
+   "maskAsset": {
+    "assetId": "asset_1b351652d8cb4ff786cc5a428b4f0c7c"
+   }
+  },
+  {
+   "camera": {
+    "extrinsics": {
+     "position": [
+      0,
+      1.6,
+      0
+     ],
+     "quaternion": [
+      0.0,
+      -0.707106781,
+      0.0,
+      -0.707106781
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   },
+   "depth": {
+    "logDepthAsset": {
+     "assetId": "asset_b48c817578034b898c0600909bdee4bf"
+    },
+    "zMin": 2.848,
+    "zMax": 351.923
+   },
+   "maskAsset": {
+    "assetId": "asset_7f22eee7280c4daab150a95a9ae8fd06"
+   }
+  }
+ ],
+ "contextFrames": [
+  {
+   "imageAsset": {
+    "assetId": "asset_87d4f1fcca334da79c20fc2b13de514b"
+   },
+   "camera": {
+    "extrinsics": {
+     "position": [
+      0,
+      1.6,
+      0
+     ],
+     "quaternion": [
+      0.0,
+      -0.0,
+      0.0,
+      1.0
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   }
+  },
+  {
+   "imageAsset": {
+    "assetId": "asset_33e9c00f15384fc09f845779ab07222e"
+   },
+   "camera": {
+    "extrinsics": {
+     "position": [
+      0,
+      1.6,
+      0
+     ],
+     "quaternion": [
+      0.0,
+      -0.707106781,
+      0.0,
+      0.707106781
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   }
+  },
+  {
+   "imageAsset": {
+    "assetId": "asset_9f439c6416894fbf8acd4f68964733e6"
+   },
+   "camera": {
+    "extrinsics": {
+     "position": [
+      0,
+      1.6,
+      0
+     ],
+     "quaternion": [
+      0.0,
+      -1.0,
+      0.0,
+      0.0
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   }
+  },
+  {
+   "imageAsset": {
+    "assetId": "asset_00c41620cc4a4a4eab42ed8c8547e78f"
+   },
+   "camera": {
+    "extrinsics": {
+     "position": [
+      0,
+      1.6,
+      0
+     ],
+     "quaternion": [
+      0.0,
+      -0.707106781,
+      0.0,
+      -0.707106781
+     ],
+     "coordinateSystem": "rub"
+    },
+    "intrinsics": {
+     "width": 1280,
+     "height": 720,
+     "fx": 640.0,
+     "fy": 640.0,
+     "cx": 640.0,
+     "cy": 360.0
+    }
+   }
+  }
+ ],
+ "styleReferenceImageAsset": {
+  "assetId": "asset_fea4e17a54ee4313b7f681074216b70b"
+ },
+ "prompt": "A still from a surreal late-1980s Japanese computer-graphics art film: airbrushed, ray-traced, soft film grain, saturated colour. A vast causeway floats on a calm dark sea. Its floor is a tight grid of small pale aqua-white glossy tiles with thin dark grout lines and tiny sparkling highlights, smooth and orderly, never coloured glass. A narrow channel of mirror-black water with a twisting glass ribbon stair runs north toward a far platform on the horizon. A raised tiled plinth holds a shallow reflecting pool and a tall narrow tower clad in a blue glass-tile grid. A colossal slab of luminous blue glass like frozen water-light, streaked vertically with white, carries a cantilevered roof slab with a terracotta-tile underside. Farther east stands a dark indigo slab whose face is a field of stars. Two gnarled trees with twisted trunks and dense crowns of thousands of tiny pixel-like dark-green leaves with yellow-green speckles: a windswept bent tree at the causeway's western edge and a smaller tree on the plinth beside the tower. Far to the south, two short glass pillars form a gate. Lighting: the sun sits on the northern horizon, just west of north, inside a blazing red-orange haze band, and a frozen lightning bolt strikes the far northern platform. Northern sky ultramarine with torn clouds glowing molten orange and gold; eastern and western skies cobalt with orange-lit cloud undersides; the southern sky, away from the sun, is deep indigo-violet with the first stars and no sun. No people, no text.",
+ "enhancePrompt": false,
+ "modelParameters": {
+  "seed": 42
+ },
+ "returnDepth": false
+}

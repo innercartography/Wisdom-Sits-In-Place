@@ -19,6 +19,7 @@ const job = JSON.parse(fs.readFileSync(viewsPath, 'utf8'));
     const res = await page.evaluate(([v, W, H, vfov]) => window.renderView(v, W, H, vfov), [v, job.width, job.height, job.vfov]);
     fs.writeFileSync(path.join(outDir, `${v.name}_layout.png`), Buffer.from(res.color.split(',')[1], 'base64'));
     fs.writeFileSync(path.join(outDir, `${v.name}_depth.rgb24`), Buffer.from(res.depth, 'base64'));
+    fs.writeFileSync(path.join(outDir, `${v.name}_trees.u8`), Buffer.from(res.trees, 'base64'));
     console.log('rendered', v.name);
   }
   await browser.close();

@@ -58,7 +58,20 @@ window.renderView = (v, W, H, vfov) => {
   renderer.setRenderTarget(rt); renderer.render(scene, cam);
   const buf = new Uint8Array(W * H * 4);
   renderer.readRenderTargetPixels(rt, 0, 0, W, H, buf);
+  // same depth pass with the trees hidden; pixels that change are tree pixels
+  const trees = []; scene.traverse(o => { if (o.isMesh && /tree/.test(o.name)) trees.push(o); });
+  trees.forEach(o => o.visible = false);
+  renderer.render(scene, cam);
+  const buf2 = new Uint8Array(W * H * 4);
+  renderer.readRenderTargetPixels(rt, 0, 0, W, H, buf2);
+  trees.forEach(o => o.visible = true);
   renderer.setRenderTarget(null); rt.dispose();
+  const tmask = new Uint8Array(W * H);
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    const s = ((H - 1 - y) * W + x) * 4;
+    tmask[y * W + x] = (buf[s] !== buf2[s] || buf[s + 1] !== buf2[s + 1] || buf[s + 2] !== buf2[s + 2]) ? 255 : 0;
+  }
+  let tbin = ''; for (let i = 0; i < tmask.length; i += 32768) tbin += String.fromCharCode.apply(null, tmask.subarray(i, i + 32768));
   // flip rows (GL origin is bottom-left) and drop alpha
   const out = new Uint8Array(W * H * 3);
   for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
@@ -66,6 +79,6 @@ window.renderView = (v, W, H, vfov) => {
     out[d] = buf[s]; out[d + 1] = buf[s + 1]; out[d + 2] = buf[s + 2];
   }
   let bin = ''; for (let i = 0; i < out.length; i += 32768) bin += String.fromCharCode.apply(null, out.subarray(i, i + 32768));
-  return { color, depth: btoa(bin) };
+  return { color, depth: btoa(bin), trees: btoa(tbin) };
 };
 </script></body></html>

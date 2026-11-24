@@ -1,0 +1,122 @@
+{
+ "operationId": "5d83433657954786829d24ae42276c41",
+ "task": "atlasChisel",
+ "state": "SUCCEEDED",
+ "seed": 42,
+ "promptUsed": "A still from a surreal late-1980s Japanese computer-graphics art film: airbrushed, ray-traced, soft film grain, saturated colour. A vast causeway floats on a calm dark sea. Its floor is a tight grid of small pale aqua-white glossy tiles with thin dark grout lines and tiny sparkling highlights, smooth and orderly, never coloured glass. A narrow channel of mirror-black water with a twisting glass ribbon stair runs north toward a far platform on the horizon. A raised tiled plinth holds a shallow reflecting pool and a tall narrow tower clad in a blue glass-tile grid. A colossal slab of luminous blue glass like frozen water-light, streaked vertically with white, carries a cantilevered roof slab with a terracotta-tile underside. Farther east stands a dark indigo slab whose face is a field of stars. Two gnarled trees with twisted trunks and dense crowns of thousands of tiny pixel-like dark-green leaves with yellow-green speckles: a windswept bent tree at the causeway's western edge and a smaller tree on the plinth beside the tower. Far to the south, two short glass pillars form a gate. Lighting: the sun sits on the northern horizon, just west of north, inside a blazing red-orange haze band, and a frozen lightning bolt strikes the far northern platform. Northern sky ultramarine with torn clouds glowing molten orange and gold; eastern and western skies cobalt with orange-lit cloud undersides; the southern sky, away from the sun, is deep indigo-violet with the first stars and no sun. No people, no text.",
+ "inputs": "blockout log-depth + tree keep masks per target; context = Gemini A0-A3 at their cameras; style reference = source painting",
+ "frames": [
+  {
+   "view": "A0_front",
+   "image": "results/frames_0_image.jpg",
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      0,
+      1.5999999046325684,
+      0
+     ],
+     "quaternion": [
+      0,
+      -7.450580625550612e-09,
+      0,
+      1
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  },
+  {
+   "view": "A1_right",
+   "image": "results/frames_1_image.jpg",
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      0,
+      1.5999999046325684,
+      0
+     ],
+     "quaternion": [
+      0,
+      0.7071067864549035,
+      0,
+      -0.7071067759181915
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  },
+  {
+   "view": "A2_back",
+   "image": "results/frames_2_image.jpg",
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      0,
+      1.5999999046325684,
+      0
+     ],
+     "quaternion": [
+      0,
+      1,
+      0,
+      7.450580625550612e-09
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  },
+  {
+   "view": "A3_left",
+   "image": "results/frames_3_image.jpg",
+   "camera": {
+    "extrinsics": {
+     "coordinateSystem": "rub",
+     "position": [
+      0,
+      1.5999999046325684,
+      0
+     ],
+     "quaternion": [
+      0,
+      0.7071067759181915,
+      0,
+      0.7071067864549035
+     ]
+    },
+    "intrinsics": {
+     "cx": 640,
+     "cy": 360,
+     "fx": 640,
+     "fy": 640,
+     "height": 720,
+     "width": 1280
+    }
+   }
+  }
+ ]
+}
