@@ -5,3 +5,4 @@ atlas/*/*_asset.json
 atlas/*/run.stderr
 atlas/*/wait.stderr
 atlas/*/submit.json
+tools/__pycache__/
