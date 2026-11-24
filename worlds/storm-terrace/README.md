@@ -141,7 +141,7 @@ SHOT E3_left: On the LIGHTNING PLATFORM, facing WEST. The platform's tiles run 1
 SHOT D0_front: Standing under the cantilevered LINTEL, facing NORTH. The brown/terracotta tiled underside fills the top of the frame overhead. Right edge, 3 m away: the GLASS MONOLITH's face runs forward like a glowing blue wall. Ahead, 8 m away: the plinth's tiled step-up edge; 16 m away, slightly left: the twisted PLINTH TREE, with the TOWER rising behind it. Left: the channel and walkways leading to the sunset horizon.
 ```
 ```
-SHOT D2_back: Under the LINTEL, facing SOUTH. Left: the glass monolith wall running back to its end; beyond it, the dark STARFIELD MONOLITH. Ahead: the tiled causeway receding to the SOUTH GATE pillars under an indigo sky. Lintel underside across the top.
+SHOT D2_back: Under the LINTEL, facing SOUTH. Left: the glass monolith wall running back to its end; beyond it, the dark STARFIELD MONOLITH. Ahead: the tiled causeway receding to the SOUTH GATE pillars under an indigo sky. Lintel underside across the top. Right side: the black channel, and on the far side of it exactly ONE tree — the BENT TREE, 20 m away. There are NO other trees and NO other towers in this direction; the south is empty, open causeway.
 ```
 ```
 SHOT D3_left: Under the LINTEL, facing WEST. Lintel underside across the top. Ahead, 9 m away: the black-water CHANNEL with its twisting ribbon stair; beyond it, the west walkway. Left of centre, 20 m away: the BENT TREE silhouetted against the red sea horizon. The right side is warmest (toward the sun).
